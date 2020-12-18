@@ -1,0 +1,19 @@
+@import url(./__line/header__line.css);
+@import url(./__logo/header__logo.css);
+
+.header {
+  margin: 45px 200px 0 200px;
+  max-width: 880px;
+  max-height: 44px;
+  align-items: left;
+  justify-content: left;
+  align-content: left;
+  width: 100%;
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    margin: 28px 0 0 0;
+  }
+}
+
