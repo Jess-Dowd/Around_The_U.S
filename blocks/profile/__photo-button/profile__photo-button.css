@@ -1,0 +1,16 @@
+.profile__photo-button {
+  width: 150px;
+  height: 50px;
+  margin: 35px 0 35px auto;
+  border: #FFFFFF 2px solid;
+  background-color: black;
+}
+
+@media screen and (max-width: 880px) {
+  .profile__photo-button {
+    margin: 0 auto 0 auto;
+    height: 50px;
+    width: 100%;
+    max-width: 282px;
+  }
+}

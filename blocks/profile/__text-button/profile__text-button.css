@@ -1,0 +1,16 @@
+.profile__text-button {
+  width: 24px;
+  height: 24px;
+  border: #FFFFFF 1px solid;
+  background-color: black;
+  margin: 37px 0 59px 18px;
+}
+
+@media screen and (max-width: 880px) {
+  .profile__text-button {
+    margin: 0 0 0 0;
+    position: relative;
+    left: 135px;
+    bottom: 90px;
+  }
+}

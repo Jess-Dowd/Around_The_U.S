@@ -1,0 +1,8 @@
+.profile__text {
+  color: #FFFFFF;
+  flex-direction: column;
+  max-width: 373px;
+  margin: 22px 0 21px 0;
+  
+  border: green 2px solid;
+}

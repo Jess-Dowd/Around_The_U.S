@@ -1,0 +1,11 @@
+.main {
+  margin: 81px 200px 0 200px;
+  max-width: 880px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  border: blue 2px solid;
+}
