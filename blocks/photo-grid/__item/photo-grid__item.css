@@ -1,0 +1,14 @@
+.photo-grid__item {
+  width: 100%;
+  max-width: 282px;
+  box-sizing: border-box;
+  border-radius: 3%;
+  border: green 2px solid;
+  margin: 0;
+}
+
+@media screen and (max-width: 880px) {
+  .photo-grid__item {
+    margin: auto;
+  }
+}

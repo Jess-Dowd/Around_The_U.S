@@ -1,0 +1,7 @@
+.photo-grid__content {
+  border: pink 2px solid;
+  display: flex;
+  flex-direction: row;
+  
+  background-color: white;
+}
