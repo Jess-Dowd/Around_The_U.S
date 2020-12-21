@@ -8,82 +8,102 @@
 </head>
 
 <body class=body>
+  <div class="body__container">
+    
+    <header class="header">
+      <img src="./images/logo.png" class="header__logo" alt="Around The World">
+      <div class="header__line"></div>
+    </header>
   
-  <header class="header">
-    <img src="./images/logo.png" class="header__logo" alt="Around The World">
-    <div class="header__line"></div>
-  </header>
-
-  <main class="main">
-
-    <section class="profile">
-      <img class="profile__image" src="./images/profilepic.jpg" alt="profile picture">
-      <div class="profile__text">
-        <h1 class="profile__name">Jacques Cousteau</h1>
-        <p class="profile__bio">Explorer</p>
-      </div>
-      <button class="profile__text-button"><img class="" src="./images/Vectorpen.png" alt="edit text"></button>
-      <button class="profile__photo-button"><img class="" src="./images/Vector.png" alt="add photo"></button>
-    </section>
-
-    <section class="photo-grid">
-      
-      <article class="photo-grid__item">
-        <img class="photo-grid__photo" src="images/bald-mountains.png" alt="profile content">
-        <div class="photo-grid__content">
-          <h2 class="photo-grid__title">Bald Mountains</h2>
-          <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+    <main class="main">
+  
+      <section class="profile">
+  
+        <img class="profile__image" src="./images/profilepic.jpg" alt="profile picture">
+        <div class="profile__text">
+          <h1 class="profile__name">Jacques Cousteau</h1>
+          <p class="profile__bio">Explorer</p>
         </div>
-      </article>
+        <button class="profile__text-button"><img class="" src="./images/Vectorpen.png" alt="edit text"></button>
+        <button class="profile__photo-button"><img class="" src="./images/Vector.png" alt="add photo"></button>
       
-      <article class="photo-grid__item">
-        <img class="photo-grid__photo" src="images/yosemite.png" alt="profile content">
-        <div class="photo-grid__content">
-          <h2 class="photo-grid__title">Yosemite Valley</h2>
-          <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+      </section>
+  
+      <section class="photo-grid">
+        
+        <article class="photo-grid__item">
+          <img class="photo-grid__photo" src="images/bald-mountains.png" alt="profile content">
+          <div class="photo-grid__content">
+            <h2 class="photo-grid__title">Bald Mountains</h2>
+            <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+          </div>
+        </article>
+        
+        <article class="photo-grid__item">
+          <img class="photo-grid__photo" src="images/yosemite.png" alt="profile content">
+          <div class="photo-grid__content">
+            <h2 class="photo-grid__title">Yosemite Valley</h2>
+            <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+          </div>
+        </article>
+        
+        <article class="photo-grid__item">
+          <img class="photo-grid__photo" src="images/lago.png" alt="profile content">
+          <div class="photo-grid__content">
+            <h2 class="photo-grid__title">Lago di Braies</h2>
+            <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+          </div>
+        </article>
+        
+        <article class="photo-grid__item">
+          <img class="photo-grid__photo" src="images/lake.png" alt="profile content">
+          <div class="photo-grid__content">
+            <h2 class="photo-grid__title">Lake Louise</h2>
+            <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+          </div>
+        </article>
+        
+        <article class="photo-grid__item">
+          <img class="photo-grid__photo" src="images/latemar.png" alt="profile content">
+          <div class="photo-grid__content">
+            <h2 class="photo-grid__title">Latemar</h2>
+            <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+          </div>
+        </article>
+        
+        <article class="photo-grid__item">
+          <img class="photo-grid__photo" src="images/vanoise.png" alt="profile content">
+          <div class="photo-grid__content">
+            <h2 class="photo-grid__title">Vanoise National Park</h2>
+            <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+          </div>
+        </article>
+  
+      </section>
+  
+    </main>
+  
+    <footer class="footer">
+      <p class="footer__text">© 2020 Around The U.S.</p> 
+    </footer>
+  
+    <section class="popup-box">
+      <form class="popup-box__container">
+        <button class="popup-box__exit"><img src="./images/Close Icon.png" alt="close"></button>
+        <h2 class="popup-box__title">Edit profile</h2>
+        <div class="popup-box__input">
+          <label for="name">name</label>
+          <input type="text" name="name-text-field" id="name">
         </div>
-      </article>
-      
-      <article class="photo-grid__item">
-        <img class="photo-grid__photo" src="images/lago.png" alt="profile content">
-        <div class="photo-grid__content">
-          <h2 class="photo-grid__title">Lago di Braies</h2>
-          <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
+        <div class="popup-box__input">
+          <label for="about">about me</label>
+          <input type="text" name="about-text-field" id="about">
         </div>
-      </article>
-      
-      <article class="photo-grid__item">
-        <img class="photo-grid__photo" src="images/lake.png" alt="profile content">
-        <div class="photo-grid__content">
-          <h2 class="photo-grid__title">Lake Louise</h2>
-          <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
-        </div>
-      </article>
-      
-      <article class="photo-grid__item">
-        <img class="photo-grid__photo" src="images/latemar.png" alt="profile content">
-        <div class="photo-grid__content">
-          <h2 class="photo-grid__title">Latemar</h2>
-          <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
-        </div>
-      </article>
-      
-      <article class="photo-grid__item">
-        <img class="photo-grid__photo" src="images/vanoise.png" alt="profile content">
-        <div class="photo-grid__content">
-          <h2 class="photo-grid__title">Vanoise National Park</h2>
-          <button class="photo-grid__heart"><img src="./images/Vector-heart.svg" alt="heart button"</button>
-        </div>
-      </article>
+        <button class="popup-box__save">Save</button>
+      </form>
+    </section>  
 
-    </section>
-
-  </main>
-
-  <footer class="footer">
-    <p>© 2020 Around The U.S.</p> 
-  </footer>
-
+  </div>
   
 </body>
 

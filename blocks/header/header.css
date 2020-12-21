@@ -2,7 +2,7 @@
 @import url(./__logo/header__logo.css);
 
 .header {
-  margin: 45px 200px 0 200px;
+  margin: 45px auto 0 auto;
   max-width: 880px;
   max-height: 44px;
   align-items: left;
@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 880px) {
   .header {
-    margin: 28px 0 0 0;
+    margin: 28px auto 0 auto;
     max-width: 320px;
   }
 }

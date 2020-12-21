@@ -1,0 +1,16 @@
+.popup-box__input {
+  width: 358px;
+  margin: 30px 36px 0 36px;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 880px) {
+  .popup-box__input {
+    width: 238px;
+    margin: 20px auto 0 auto;
+  }
+}

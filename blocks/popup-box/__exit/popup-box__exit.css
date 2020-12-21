@@ -1,0 +1,15 @@
+.popup-box__exit {
+  position: relative;
+  top: -35px;
+  right: -230px;
+  border: red 2px solid;
+  height: 40px;
+  width: 40px;
+  background-color: black;
+}
+
+@media screen and (max-width: 880px) {
+  .popup-box__exit {
+    right: -120px;
+  }
+}
