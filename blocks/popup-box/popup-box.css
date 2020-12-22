@@ -3,6 +3,8 @@
 @import url(./__save/popup-box__save.css);
 @import url(./__title/popup-box__title.css);
 @import url(./__exit/popup-box__exit.css);
+@import url(./__open/popup-box__open.css);
+@import url(./__closed/popup-box__closed.css);
 
 .popup-box {
   background-color: rgba(0, 0, 25, 0.4);
@@ -16,9 +18,5 @@
   width: 100%;
   height: 100%;
   border: purple 3px solid;
-  display: flex;
-  flex-direction: column; 
-  justify-content: center;
-  align-items: center;
-  /*display: none;*/
+  
 }
