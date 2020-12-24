@@ -21,8 +21,8 @@
   
         <img class="profile__image" src="./images/profilepic.jpg" alt="profile picture">
         <div class="profile__text">
-          <h1 class="profile__name">Jacques Cousteau</h1>
-          <p class="profile__bio">Explorer</p>
+          <h1 class="profile__name">your name</h1>
+          <p class="profile__bio">your profession</p>
         </div>
         <button class="profile__text-button"><img class="" src="./images/Vectorpen.png" alt="edit text"></button>
         <button class="profile__photo-button"><img class="" src="./images/Vector.png" alt="add photo"></button>
@@ -85,17 +85,17 @@
       <section class="popup-box popup-box__closed">
 
         <form class="popup-box__container">
-          <button class="popup-box__exit"><img src="./images/Close Icon.png" alt="close"></button>
+          <button class="popup-box__exit" type="button"><img src="./images/Close Icon.png" alt="close"></button>
           <h2 class="popup-box__title">Edit profile</h2>
           <div class="popup-box__input">
             <label for="name">name</label>
-            <input type="text" name="name-text-field" id="name">
+            <input type="text" name="name-text-field" class="popup-box__name">
           </div>
           <div class="popup-box__input">
             <label for="about">about me</label>
-            <input type="text" name="about-text-field" id="about">
+            <input type="text" name="about-text-field" class="popup-box__about">
           </div>
-          <button class="popup-box__save">Save</button>
+          <input type="submit" class="popup-box__save">
         </form>
 
       </section>  

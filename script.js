@@ -1,62 +1,36 @@
-(function one(){ 
-let openBox = document.querySelector('.profile__text-button');
-let popupBox = document.querySelector(".popup-box")
-console.log(openBox, popupBox);
-console.log(popupBox.classList); })();
-
-
 (function open(){ 
   let openBox = document.querySelector('.profile__text-button');
   let popupBox = document.querySelector(".popup-box")
   openBox.addEventListener("click", function () {
     popupBox.classList.add ("popup-box__open");
     popupBox.classList.remove("popup-box__closed");
-  })
-  console.log(openBox, popupBox);
-  console.log(popupBox.classList); })();
+  }) })();
+
+(function close(){
+    let popupBox = document.querySelector(".popup-box");
+    let closeBox = document.querySelector(".popup-box__exit");
+    closeBox.addEventListener("click", function () {
+      popupBox.classList.add ("popup-box__closed");
+      popupBox.classList.remove("popup-box__open");
+    }) })();  
 
 
-function open() {
+
+let formElement =  document.querySelector(".popup-box__container");
+
+function handleFormSubmit (evt) {
+    evt.preventDefault(); 
+    let nameInput = document.querySelector(".popup-box__name").value;
+    let jobInput = document.querySelector(".popup-box__about").value;
+
+
   
-  console.log(popupBox.classList);
-}
+    let profileValue = document.querySelector(".profile__name");
+    let profileBio = document.querySelector(".profile__bio");
 
-open()
-//openBox.addEventListener("click", function () {//
-  
+    profileValue.textContent = nameInput;
+    profileBio.textContent = jobInput;
+    
+};
 
-
-
-
-//let container = document.querySelector(.body__container);//
-
-//let profile = main.querySelector(".profile");//
-//
-//let openBox = profile.querySelector(".profile__text-button");//
-
-//let inputName = profile.querySelector(".profile__name");//
-//let inputBio =profile.querySelector(".profile__bio");//
-
-//function open() {//
-  
- 
-//}let container = document.querySelector('.main')//
-//console.log(open)//
-//openBox.addEventListener("click", open); //
-//^ opens the popup-box when edit button is clicked.//
-popupBox.classList.remove(".popup-box__closed");
-  popupBox.classList.add('.popup-box__closed');
-
-
-//let closeBox = popupBox.querySelector(".popup-box__exit")//
-
-//function close() {
-  //popupBox.classList.remove(".popup-box__open");
-  //popupBox.classList.add('.popup-box__closed');
-//}
-
-//closeBox.addEventListener("click", close);
-//^ closes the popup-box when x button is clicked.
-
-
-
+formElement.addEventListener('submit', handleFormSubmit);
