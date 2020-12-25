@@ -10,7 +10,6 @@
   grid-gap: 17px;
   width: 100%;
   max-width: 880px;
-  border: green 2px solid;
 }
 
 @media screen and (max-width: 880px) {

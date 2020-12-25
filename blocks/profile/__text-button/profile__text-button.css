@@ -5,8 +5,17 @@
   background-color: black;
   margin: 37px 0 59px 18px;
   padding: 0;
-  border: red 2px solid;
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 }
+
+.profile__text-button:hover {
+  opacity: 0.7;
+}
+
 
 @media screen and (max-width: 880px) {
   .profile__text-button {

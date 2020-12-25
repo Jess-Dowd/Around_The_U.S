@@ -34,3 +34,20 @@ function handleFormSubmit (evt) {
 };
 
 formElement.addEventListener('submit', handleFormSubmit);
+
+ 
+
+
+function toggleHeart(id) {
+
+  var heartButton = document.getElementById(id).innerHTML;
+
+  if(heartButton == '<img src="./images/Vector-heart.svg" alt="heart button">')
+  {
+  document.getElementById(id).innerHTML = '<img src= "./images/clickedheart.png" alt="heart button">';
+  }
+  if(heartButton == '<img src= "./images/clickedheart.png" alt="heart button">')
+  {
+  document.getElementById(id).innerHTML = '<img src="./images/Vector-heart.svg" alt="heart button">';
+  }
+}

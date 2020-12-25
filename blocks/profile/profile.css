@@ -12,7 +12,6 @@
   flex-direction: row;
   align-items: center;
   align-content: center;
-  border: red 2px solid;
 }
   
 @media screen and (max-width: 880px) {
