@@ -1,5 +1,3 @@
-@import url(./_active/photo-grid__heart_active.css);
-@import url(./_disabled/photo-grid__heart_disabled.css);
 
 .photo-grid__heart {
   margin: auto 25px auto auto;
