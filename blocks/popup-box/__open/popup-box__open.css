@@ -1,7 +1,7 @@
 .popup-box__open {
   border: purple 3px solid;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
