@@ -5,6 +5,8 @@
 @import url(./__exit/popup-box__exit.css);
 @import url(./__open/popup-box__open.css);
 @import url(./__closed/popup-box__closed.css);
+@import url(./__name/popup-box__name.css);
+@import url(./__about/popup-box__about.css);
 
 .popup-box {
   background-color: rgba(0, 0, 25, 0.4);
