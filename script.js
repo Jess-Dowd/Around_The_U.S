@@ -2,16 +2,16 @@
   let openBox = document.querySelector('.profile__text-button');
   let popupBox = document.querySelector(".popup-box")
   openBox.addEventListener("click", function () {
-    popupBox.classList.add ("popup-box__open");
-    popupBox.classList.remove("popup-box__closed");
+    popupBox.classList.add ("popup-box_open");
+    popupBox.classList.remove("popup-box_closed");
   }) })();
 
 (function close(){
     let popupBox = document.querySelector(".popup-box");
     let closeBox = document.querySelector(".popup-box__exit");
     closeBox.addEventListener("click", function () {
-      popupBox.classList.add ("popup-box__closed");
-      popupBox.classList.remove("popup-box__open");
+      popupBox.classList.add ("popup-box_closed");
+      popupBox.classList.remove("popup-box_open");
     }) })();  
 
 
