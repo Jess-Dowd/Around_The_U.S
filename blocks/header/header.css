@@ -1,14 +1,14 @@
-@import url(./__line/header__line.css);
 @import url(./__logo/header__logo.css);
 
 .header {
   margin: 45px auto 0 auto;
   max-width: 880px;
-  max-height: 44px;
   align-items: left;
   justify-content: left;
   align-content: left;
   width: 100%;
+  border-bottom: 1px solid rgb(84,84,84, .7); 
+
 }
 
 @media screen and (max-width: 880px) {

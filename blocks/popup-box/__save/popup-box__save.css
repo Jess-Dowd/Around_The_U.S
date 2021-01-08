@@ -13,10 +13,12 @@
   transition-duration: 1s;
   transition-timing-function: ease;
   transition-delay: 0s;
+  border: none;
 }
 
 .popup-box__save:hover {
-  opacity: 0.8;
+  opacity: 0.6;
+  cursor: pointer
 }
 
 @media screen and (max-width: 880px) {

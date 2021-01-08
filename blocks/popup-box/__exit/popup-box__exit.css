@@ -4,7 +4,7 @@
   right: -230px;
   height: 40px;
   width: 40px;
-  background-color: black;
+  background-color: transparent;
   outline: none;
   border: none;
   opacity: 1;
@@ -14,12 +14,16 @@
   transition-delay: 0s;
 }
 
-.profile__photo-button:hover {
-  opacity: 0.8;
+.popup-box__exit:hover {
+  opacity: 0.6;
+  cursor: pointer
 }
 
 @media screen and (max-width: 880px) {
   .popup-box__exit {
-    right: -120px;
+    right: -100px;
+    top: -55px;
+    height: 26px;
+    width: 26px;
   }
 }

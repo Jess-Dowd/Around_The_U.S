@@ -1,5 +1,4 @@
 .popup-box_open {
-  border: purple 3px solid;
   display: flex;
   flex-direction: column;
   justify-content: center;

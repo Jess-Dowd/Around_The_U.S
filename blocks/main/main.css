@@ -1,10 +1,8 @@
 .main {
-  margin: 81px auto 0 auto;
+  margin: 0 auto 0 auto;
   max-width: 880px;
   width: 100%;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
   display: flex;
   flex-direction: column;
+  min-height: calc(100vh - 78px);
 }

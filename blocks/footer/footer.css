@@ -13,5 +13,7 @@
   .footer {
     margin: 48px auto 36px auto;
     max-width: 292px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }

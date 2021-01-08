@@ -10,11 +10,11 @@
   grid-gap: 17px;
   width: 100%;
   max-width: 880px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 880px) {
   .photo-grid {
-    margin: 0 90px;
     max-width: 320px;
     grid-gap: 20px;
   }

@@ -11,8 +11,7 @@
   <div class="body__container">
     
     <header class="header">
-      <img src="./images/logo.png" class="header__logo" alt="Around The World">
-      <div class="header__line"></div>
+      <img src="./images/logo.svg" class="header__logo" alt="Around The World">
     </header>
   
     <main class="main">
@@ -24,8 +23,8 @@
           <h1 class="profile__name">jacques Cousteau</h1>
           <p class="profile__bio">Explorer</p> 
         </div>
-        <button class="profile__text-button"><img class="" src="./images/Vectorpen.png" alt="edit text"></button>
-        <button class="profile__photo-button"><img class="" src="./images/Vector.png" alt="add photo"></button>
+        <button class="profile__text-button" type="submit" aria-label="edit profile"></button>
+        <button class="profile__photo-button" type="submit" aria-label="add photo"></button>
       
       </section>
   
@@ -35,7 +34,7 @@
           <img class="photo-grid__photo" src="images/bald-mountains.png" alt="profile content">
           <div class="photo-grid__content">
             <h2 class="photo-grid__title">Bald Mountains</h2>
-            <button class="photo-grid__heart" id="select" onclick="toggleHeart('select')"><img src="./images/Vector-heart.svg" alt="heart button"></button>
+            <button class="photo-grid__heart" id="select" type="submit"><img src="./images/Vector-heart.svg" alt="heart button" aria-label="like photo"></button>
           </div>
         </article>
         
@@ -43,7 +42,7 @@
           <img class="photo-grid__photo" src="images/yosemite.png" alt="profile content">
           <div class="photo-grid__content">
             <h2 class="photo-grid__title">Yosemite Valley</h2>
-            <button class="photo-grid__heart" id="select1" onclick="toggleHeart('select1')"><img src="./images/Vector-heart.svg" alt="heart button"></button>
+            <button class="photo-grid__heart" id="select1" type="submit"><img src="./images/Vector-heart.svg" alt="heart button" aria-label="like photo"></button>
           </div>
         </article>
         
@@ -51,7 +50,7 @@
           <img class="photo-grid__photo" src="images/lago.png" alt="profile content">
           <div class="photo-grid__content">
             <h2 class="photo-grid__title">Lago di Braies</h2>
-            <button class="photo-grid__heart" id="select2" onclick="toggleHeart('select2')"><img src="./images/Vector-heart.svg" alt="heart button"></button>
+            <button class="photo-grid__heart" id="select2" type="submit"><img src="./images/Vector-heart.svg" alt="heart button" aria-label="like photo"></button>
           </div>
         </article>
         
@@ -59,7 +58,7 @@
           <img class="photo-grid__photo" src="images/lake.png" alt="profile content">
           <div class="photo-grid__content">
             <h2 class="photo-grid__title">Lake Louise</h2>
-            <button class="photo-grid__heart" id="select3" onclick="toggleHeart('select3')"><img src="./images/Vector-heart.svg" alt="heart button"></button>
+            <button class="photo-grid__heart" id="select3" type="submit"><img src="./images/Vector-heart.svg" alt="heart button" aria-label="like photo"></button>
           </div>
         </article>
         
@@ -67,7 +66,7 @@
           <img class="photo-grid__photo" src="images/latemar.png" alt="profile content">
           <div class="photo-grid__content">
             <h2 class="photo-grid__title">Latemar</h2>
-            <button class="photo-grid__heart" id="select4" onclick="toggleHeart('select4')"><img src="./images/Vector-heart.svg" alt="heart button"></button>
+            <button class="photo-grid__heart" id="select4" type="submit"><img src="./images/Vector-heart.svg" alt="heart button" aria-label="like photo"></button>
           </div>
         </article>
         
@@ -75,36 +74,33 @@
           <img class="photo-grid__photo" src="images/vanoise.png" alt="profile content">
           <div class="photo-grid__content">
             <h2 class="photo-grid__title">Vanoise National Park</h2>
-            <button class="photo-grid__heart" id="select5" onclick="toggleHeart('select5')"><img src="./images/Vector-heart.svg" alt="heart button"></button>
+            <button class="photo-grid__heart" id="select5" type="submit"><img src="./images/Vector-heart.svg" alt="heart button" aria-label="like photo"></button>
           </div>
         </article>
       </section>
 
-        
-      <section class="popup-box popup-box_closed">
-
-        <form class="popup-box__container">
-          <button class="popup-box__exit" type="button"><img src="./images/Close-Icon.png" alt="close icon"></button>
-          <h2 class="popup-box__title">Edit profile</h2>
-          <div class="popup-box__input">
-            <label for="name">name</label>
-            <input type="text" name="name-text-field" class="popup-box__name" id="name">
-            <label for="about">about me</label>
-            <input type="text" name="about-text-field" class="popup-box__about" id="about">
-          </div>
-          <input type="submit" class="popup-box__save">
-        </form>
-
-      </section>  
-  
     </main>
   
     <footer class="footer">
       <p class="footer__text">© 2020 Around The U.S.</p> 
     </footer>
 
+    <div class="popup-box popup-box_closed">
+
+      <form class="popup-box__container" name="edit-profile">
+        <button class="popup-box__exit" type="button"><img src="./images/close-icon.svg" alt="close icon" aria-label="exit popup"></button>
+        <h2 class="popup-box__title">Edit profile</h2>
+        <div class="popup-box__input">
+          <input type="text" name="name-text-field" class="popup-box__text popup-box__text_name" id="name" placeholder="name" required></input>
+          <input type="text" name="about-text-field" class="popup-box__text popup-box__text_about" id="about" placeholder="profession" required></input>
+        </div>
+        <button type="submit" class="popup-box__save">Save</button>
+      </form>
+
+    </div>  
+
 </div>
-  <script src="./script.js"></script>  
+  <script src="./scripts/script.js"></script>  
 </body>
 
 </html>

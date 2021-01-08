@@ -1,7 +1,13 @@
 .profile__text {
   color: #FFFFFF;
   flex-direction: column;
-  max-width: 500px;
+  
+  min-width: 500px;
   margin: 22px 0 21px 0;
-  min-width: 400px;
+}
+
+@media screen and (max-width: 880px) {
+  .profile__text {
+    min-width: 190px;
+  }
 }

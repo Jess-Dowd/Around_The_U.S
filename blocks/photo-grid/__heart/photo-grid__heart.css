@@ -8,8 +8,10 @@
   transition-delay: 0s;
   border: none;
   outline: none;
+  background-color: transparent;
 }
 
 .photo-grid__heart:hover {
-  opacity: 0.7;
+  opacity: 0.6;
+  cursor: pointer
 }

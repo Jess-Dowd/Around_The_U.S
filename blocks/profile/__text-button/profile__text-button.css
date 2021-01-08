@@ -2,7 +2,7 @@
   width: 24px;
   height: 24px;
   border: #FFFFFF 1px solid;
-  background-color: black;
+  background-color: transparent;
   margin: 37px 0 59px 18px;
   padding: 0;
   opacity: 1;
@@ -10,18 +10,24 @@
   transition-duration: 1s;
   transition-timing-function: ease;
   transition-delay: 0s;
+  background-image: url(../../../images/pen.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .profile__text-button:hover {
-  opacity: 0.7;
+  opacity: 0.6;
+  cursor: pointer
 }
 
 
 @media screen and (max-width: 880px) {
   .profile__text-button {
-    margin: 0 0 0 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
     position: relative;
     left: 135px;
-    bottom: 90px;
+    bottom: 80px;
   }
 }
