@@ -12,6 +12,8 @@
   transition-duration: 1s;
   transition-timing-function: ease;
   transition-delay: 0s;
+  background-image: url(../../../images/close-icon.svg);
+  background-position: center;
 }
 
 .popup-box__exit:hover {
@@ -21,8 +23,8 @@
 
 @media screen and (max-width: 880px) {
   .popup-box__exit {
-    right: -100px;
-    top: -55px;
+    right: -125px;
+    top: -40px;
     height: 26px;
     width: 26px;
   }

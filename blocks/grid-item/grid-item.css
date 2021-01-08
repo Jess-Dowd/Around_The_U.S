@@ -1,11 +1,11 @@
-.photo-grid__item {
+.grid-item {
   width: 100%;
   max-width: 282px;
   margin: 0;
 }
 
 @media screen and (max-width: 880px) {
-  .photo-grid__item {
+  .grid-item {
     margin: auto;
   }
 }

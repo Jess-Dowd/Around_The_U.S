@@ -1,6 +1,6 @@
 
 .photo-grid__heart {
-  margin: auto 25px auto auto;
+  margin: auto 23px auto auto;
   opacity: 1;
   transition-property: opacity;
   transition-duration: 1s;
@@ -9,6 +9,11 @@
   border: none;
   outline: none;
   background-color: transparent;
+  background-image: url(../../../images/vector-heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 18px;
 }
 
 .photo-grid__heart:hover {
