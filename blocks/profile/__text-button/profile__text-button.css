@@ -1,9 +1,9 @@
 .profile__text-button {
   width: 24px;
   height: 24px;
+  margin-bottom: 30px;
   border: #FFFFFF 1px solid;
   background-color: transparent;
-  margin: 37px 0 59px 18px;
   padding: 0;
   opacity: 1;
   transition-property: opacity;

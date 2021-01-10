@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-rendering: auto;
 }
   
 @media screen and (max-width: 880px) {
