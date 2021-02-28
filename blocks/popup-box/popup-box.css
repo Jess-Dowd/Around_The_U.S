@@ -4,6 +4,12 @@
 @import url(./__title/popup-box__title.css);
 @import url(./__exit/popup-box__exit.css);
 @import url(./__text/popup-box__text.css);
+@import url(./_type/popup-box_type_photo.css);
+@import url(./__image/popup-box__image.css);
+@import url(./__exit/_preview/popup-box_exit_preview.css);
+@import url(./__container/_type/popup-box__container_type_photo.css);
+@import url(./__caption/popup-box__caption.css);
+
 
 .popup-box {
   background-color: rgba(0, 0, 0, 0.5);

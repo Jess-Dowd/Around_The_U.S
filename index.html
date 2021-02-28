@@ -19,66 +19,17 @@
 
       <section class="profile">
 
-        <img class="profile__image" src="./images/profilepic.jpg" alt="profile picture">
+        <img class="profile__image" src="./images/profile.jpg" alt="profile picture">
         <div class="profile__text">
-          <h1 class="profile__name">Jacques Cousteau</h1>
-          <p class="profile__bio">Explorer</p>
+          <h1 class="profile__name">Jessalyn Dowd</h1>
+          <p class="profile__bio">Web Developer</p>
         </div>
         <button class="profile__text-button" type="submit" aria-label="edit profile"></button>
         <button class="profile__photo-button" type="submit" aria-label="add photo"></button>
 
       </section>
 
-      <section class="grid-container">
-
-        <article class="photo-grid">
-          <img class="photo-grid__photo" src="images/bald-mountains.png" alt="profile content">
-          <div class="photo-grid__content">
-            <h2 class="photo-grid__title">Bald Mountains</h2>
-            <button class="photo-grid__heart" type="submit" aria-label="like photo"></button>
-          </div>
-        </article>
-
-        <article class="photo-grid">
-          <img class="photo-grid__photo" src="images/yosemite.png" alt="profile content">
-          <div class="photo-grid__content">
-            <h2 class="photo-grid__title">Yosemite Valley</h2>
-            <button class="photo-grid__heart" type="submit" aria-label="like photo"></button>
-          </div>
-        </article>
-
-        <article class="photo-grid">
-          <img class="photo-grid__photo" src="images/lago.png" alt="profile content">
-          <div class="photo-grid__content">
-            <h2 class="photo-grid__title">Lago di Braies</h2>
-            <button class="photo-grid__heart" type="submit" aria-label="like photo"></button>
-          </div>
-        </article>
-
-        <article class="photo-grid">
-          <img class="photo-grid__photo" src="images/lake.png" alt="profile content">
-          <div class="photo-grid__content">
-            <h2 class="photo-grid__title">Lake Louise</h2>
-            <button class="photo-grid__heart" type="submit" aria-label="like photo"></button>
-          </div>
-        </article>
-
-        <article class="photo-grid">
-          <img class="photo-grid__photo" src="images/latemar.png" alt="profile content">
-          <div class="photo-grid__content">
-            <h2 class="photo-grid__title">Latemar</h2>
-            <button class="photo-grid__heart" type="submit" aria-label="like photo"></button>
-          </div>
-        </article>
-
-        <article class="photo-grid">
-          <img class="photo-grid__photo" src="images/vanoise.png" alt="profile content">
-          <div class="photo-grid__content">
-            <h2 class="photo-grid__title">Vanoise National Park</h2>
-            <button class="photo-grid__heart" type="submit" aria-label="like photo"></button>
-          </div>
-        </article>
-      </section>
+      <section class="grid-container"></section>
 
     </main>
 
@@ -86,10 +37,9 @@
       <p class="footer__text">© 2020 Around The U.S.</p>
     </footer>
 
-    <div class="popup-box">
-
+    <div class="popup-box popup-box_type_profile">
       <form class="popup-box__container" name="edit-profile">
-        <button class="popup-box__exit" type="button" aria-label="exit popup"></button>
+        <button class="popup-box__exit popup-box_exit_profile" type="button"></button>
         <h2 class="popup-box__title">Edit profile</h2>
         <div class="popup-box__input">
           <input type="text" name="name-text-field" class="popup-box__text popup-box__text_name" id="name"
@@ -99,11 +49,44 @@
         </div>
         <button type="submit" class="popup-box__save">Save</button>
       </form>
+    </div>
 
+    <div class="popup-box popup-box_type_card">
+      <form class="popup-box__container" name="edit-profile">
+        <button class="popup-box__exit popup-box_exit_add-card" type="button" ></button>
+        <h2 class="popup-box__title">New Place</h2>
+        <div class="popup-box__input">
+          <input type="text" name="" class="popup-box__text popup-box__text_name" id="name"
+            placeholder="Title" required>
+          <input type="url" name="link" class="popup-box__text popup-box__text_about" id="link"
+            placeholder="Image Link" required>
+        </div>
+        <button type="submit" class="popup-box__save">Create</button>
+      </form>
+    </div>
+
+    <div class="popup-box popup-box_type_photo">
+      <div class="popup-box__container popup-box__container_type_photo">
+        <img class="popup-box__image" src="" alt=""></img>
+        <button class="popup-box__exit popup-box_exit_preview" type="button" ></button>
+        <figcaption class="popup-box__caption" style="color:white; font-weight: normal; font-size: 12px; line-height: 15px; margin: 10px auto 0 0;"></figcaption>
+      </div> 
     </div>
 
   </div>
+  <template id="card-template">
+    <article class="photo-grid">
+      <button class="photo-grid__delete" type="button"></button>
+      <img class="photo-grid__photo" src="" alt="profile content">
+      <div class="photo-grid__content">
+        <h2 class="photo-grid__title"></h2>
+        <button class="photo-grid__heart" type="button"></button>
+      </div>
+    </article>
+  </template>
+
   <script src="./scripts/script.js"></script>
+
 </body>
 
 </html>

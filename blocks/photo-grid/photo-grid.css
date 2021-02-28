@@ -2,11 +2,13 @@
 @import url(./__photo/photo-grid__photo.css);
 @import url(./__title/photo-grid__title.css);
 @import url(./__content/photo-grid__content.css);
+@import url(./__delete/photo-grid__delete.css);
 
 .photo-grid {
   width: 100%;
   max-width: 282px;
   margin: 0;
+  
 }
 
 @media screen and (max-width: 880px) {

@@ -1,0 +1,8 @@
+.popup-box__caption.css {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  display: flex;
+  margin: 10px auto 0 0;
+}
