@@ -34,20 +34,20 @@ const initialCards = [
 const addCardModal = document.querySelector(".popup-box_type_card");
 const addProfileInfo = document.querySelector(".popup-box_type_profile");
 const photoModal = document.querySelector(".popup-box_type_photo");
-const nameInput = document.querySelector(".popup-box__text_name");
+const nameInput = document.querySelector(".popup-box__text_type_name");
 const jobInput = document.querySelector(".popup-box__text_about");
-const link = document.querySelector(".popup-box__card_photo");
-const photoName = document.querySelector(".popup-box__card_name");
+const link = document.querySelector(".popup-box__text_type_photo");
+const photoName = document.querySelector(".popup-box__text_type_card");
 
 /////////////////////////////////
 ///Buttons and other DOM elements 
 //////////// ////////////////////
 const addCardButton = document.querySelector(".profile__photo-button")
-const addCardModalCloseButton = document.querySelector(".popup-box_exit_add-card")
-const profileModalCloseButton = document.querySelector(".popup-box_exit_profile")
+const addCardModalCloseButton = document.querySelector(".popup-box__exit_type_add-card")
+const profileModalCloseButton = document.querySelector(".popup-box__exit_type_profile")
 const openBox = document.querySelector('.profile__text-button');
 const closeBox = document.querySelector(".popup-box__exit");
-const photoPreviewCloseButton = document.querySelector(".popup-box_exit_preview");
+const photoPreviewCloseButton = document.querySelector(".popup-box__exit_preview");
 const formElement = document.querySelector(".popup-box__save_profile");
 const currentName = document.querySelector(".profile__name");
 const currentBio = document.querySelector(".profile__bio");
@@ -61,8 +61,6 @@ const placesList = document.querySelector(".grid-container");
 ////////////
 ///Functions
 //////////// 
-
-
 function addCard(placeLink, placeName){
   const newCard = createCard(placeLink, placeName);
   placesList.prepend(newCard);
@@ -77,7 +75,6 @@ function handleCardSubmit(evt) {
 cardCreate.addEventListener("click", handleCardSubmit);
 initialCards.forEach(card =>{
   addCard(card.link, card.name);
- 
 });
 
 function handleFormSubmit(evt) {
@@ -118,12 +115,9 @@ function createCard(placeLink, placeName) {
     popupCaption.textContent = placeName;
     togglePopupBox(photoModal)
   });
-
-
   return cardElement
 };
 
- 
 //////////////////
 ///Event Handlers
 /////////////////
