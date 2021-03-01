@@ -3,6 +3,8 @@
 @import url(./__title/photo-grid__title.css);
 @import url(./__content/photo-grid__content.css);
 @import url(./__delete/photo-grid__delete.css);
+@import url(./__heart/_clicked/photo-grid__heart_clicked.css);
+
 
 .photo-grid {
   width: 100%;
