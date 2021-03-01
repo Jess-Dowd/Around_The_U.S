@@ -33,10 +33,11 @@ const initialCards = [
 ////////////  
 const addCardModal = document.querySelector(".popup-box_type_card");
 const addProfileInfo = document.querySelector(".popup-box_type_profile");
-const popupBox = document.querySelector(".popup-box");
+const photoModal = document.querySelector(".popup-box_type_photo");
 const nameInput = document.querySelector(".popup-box__text_name");
 const jobInput = document.querySelector(".popup-box__text_about");
-const photoModal = document.querySelector(".popup-box_type_photo");
+const link = document.querySelector(".popup-box__card_photo");
+const photoName = document.querySelector(".popup-box__card_name");
 
 /////////////////////////////////
 ///Buttons and other DOM elements 
@@ -47,10 +48,10 @@ const profileModalCloseButton = document.querySelector(".popup-box_exit_profile"
 const openBox = document.querySelector('.profile__text-button');
 const closeBox = document.querySelector(".popup-box__exit");
 const photoPreviewCloseButton = document.querySelector(".popup-box_exit_preview");
-const formElement = document.querySelector(".popup-box__save");
-const cardCreate = document.querySelector(".popup-box__create");
+const formElement = document.querySelector(".popup-box__save_profile");
 const currentName = document.querySelector(".profile__name");
 const currentBio = document.querySelector(".profile__bio");
+const cardCreate = document.querySelector(".popup-box__save_card");
 
 //////////////
 ///wrappers 
@@ -60,81 +61,24 @@ const placesList = document.querySelector(".grid-container");
 ////////////
 ///Functions
 //////////// 
-function createCardElement(card) {
-  const cardTemplate = document.querySelector("#card-template").content.querySelector(".photo-grid");
-  const cardElement = cardTemplate.cloneNode(true);
-  
-  const cardImage = cardElement.querySelector(".photo-grid__photo");
-  const cardTitle = cardElement.querySelector(".photo-grid__title");
-  
-  const likeButton = cardElement.querySelector(".photo-grid__heart");
-  const deleteButton = cardElement.querySelector(".photo-grid__delete");
 
-  cardImage.src = card.link;
-  cardTitle.textContent = card.name;
 
-  cardImage.addEventListener("click", () => onImagePreview(card));
-  
-  deleteButton.addEventListener("click", () => cardElement.remove());
-
-  likeButton.addEventListener("click", () => likeButton.classList.toggle("photo-grid__heart_clicked")); 
-
-  return cardElement; 
-}; 
-
-function renderCard(card, wrapper) {
-  wrapper.append(createCardElement(card));
+function addCard(placeLink, placeName){
+  const newCard = createCard(placeLink, placeName);
+  placesList.prepend(newCard);
 };
 
-//addButton.addEventListener("click", function () {
- // const artist = document.querySelector(".input__text_type_artist");
- // const title = document.querySelector(".input__text_type_title");
+function handleCardSubmit(evt) {
+  evt.preventDefault();
+  addCard(link.value, photoName.value)
+  togglePopupBox(addCardModal)
+};
 
- // addCard(artist.value, title.value);
-
-  //artist.value = "";
- // title.value = "";
-//});
-
-//function addCard(artistValue, titleValue) {
- // const songTemplate = document.querySelector("#song-template").content;
-  //const songElement = songTemplate.querySelector('.song').cloneNode(true);
-
- // songElement.querySelector(".song__artist").textContent = artistValue;
- // songElement.querySelector(".song__title").textContent = titleValue;
-  //songElement.querySelector(".song__like").addEventListener("click", function (evt) {
-   // evt.target.classList.toggle("song__like_active");
-  //}); 
-  //songsContainer.append(songElement);
-//};
-
-//function onAddNewCard(card) {
- // initialCards.push({
-   // name: "Miami",
-   /// link: "localhost"
-  //});
-  //placesList.append(cardElement);
-//}
-
-//function handlePlaceCardSubmit(evt) {
- // evt.preventDefault();
- // renderCard(cardElement, placesList)
-//}
-
-//function handleCardSubmit(evt) {
- // evt.preventDefault();
- // cardImage.src = card.link;
- // cardTitle.textContent = card.name;
-  //togglePopupBox(addCardModal)
-//};
-
-const onImagePreview = card => {
-  const popupImage = photoModal.querySelector(".popup-box__image");
-  const imageCaption = photoModal.querySelector(".popup-box__caption");
-  popupImage.src = card.link;
-  imageCaption.textContent = card.name
-  togglePopupBox(photoModal);
-}
+cardCreate.addEventListener("click", handleCardSubmit);
+initialCards.forEach(card =>{
+  addCard(card.link, card.name);
+ 
+});
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -151,6 +95,35 @@ function togglePopupBox(modalWindow) {
   modalWindow.classList.toggle("popup-box_open");
 };
 
+function createCard(placeLink, placeName) {
+  const cardTemplate = document.querySelector("#card-template").content.querySelector(".photo-grid");
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector(".photo-grid__photo")
+  const cardTitle = cardElement.querySelector(".photo-grid__title");
+
+  cardImage.src = placeLink;
+  cardTitle.textContent = placeName;
+  
+  const likeButton = cardElement.querySelector(".photo-grid__heart");
+  const deleteButton = cardElement.querySelector(".photo-grid__delete");
+
+  deleteButton.addEventListener("click", () => cardElement.remove());
+
+  likeButton.addEventListener("click", () => likeButton.classList.toggle("photo-grid__heart_clicked")); 
+
+  cardImage.addEventListener("click", () => {
+    const popupImage = document.querySelector(".popup-box__image");
+    const popupCaption = document.querySelector(".popup-box__caption");
+    popupImage.src = placeLink;
+    popupCaption.textContent = placeName;
+    togglePopupBox(photoModal)
+  });
+
+
+  return cardElement
+};
+
+ 
 //////////////////
 ///Event Handlers
 /////////////////
@@ -163,9 +136,3 @@ profileModalCloseButton.addEventListener("click", () => togglePopupBox(addProfil
 photoPreviewCloseButton.addEventListener("click", () => togglePopupBox(photoModal));
 
 formElement.addEventListener('click', handleFormSubmit);
-
-initialCards.forEach(card => renderCard(card, placesList));
-
-//formElement.addEventListener('click', handleFormSubmit);submit photo
-
-//cardElement.addEventListener('click', handleCardSubmit);
