@@ -29,36 +29,32 @@
     </footer>
 
     <div class="popup-box popup-box_type_profile">
-      <form class="popup-box__container" name="edit-profile">
+      <form class="popup-box__container popup-box__container_type_profile" name="edit-profile">
         <button class="popup-box__exit popup-box__exit_type_profile" type="button"></button>
         <h2 class="popup-box__title">Edit profile</h2>
         <div class="popup-box__input">
-          <input type="text" name="name-text-field" class="popup-box__text popup-box__text_type_name"
-            placeholder="name" required>
-          <input type="text" name="about-text-field" class="popup-box__text popup-box__text_about" id="about"
-            placeholder="profession" required>
+          <input type="text" name="name-text-field" class="popup-box__text popup-box__text_type_name" placeholder="name" required>
+          <input type="text" name="about-text-field" class="popup-box__text popup-box__text_about" id="about" placeholder="profession" required>
         </div>
         <button type="submit" class="popup-box__save popup-box__save_profile">Save</button>
       </form>
     </div>
 
     <div class="popup-box popup-box_type_card">
-      <form class="popup-box__container" name="edit-profile">
+      <form class="popup-box__container popup-box__container_type_card" name="edit-profile">
         <button class="popup-box__exit popup-box__exit_type_add-card" type="button" ></button>
         <h2 class="popup-box__title">New Place</h2>
         <div class="popup-box__input">
-          <input type="text" class="popup-box__text popup-box__text_type_card"
-            placeholder="Title" required>
-          <input type="url" name="link" class="popup-box__text popup-box__text_type_photo" id="link"
-            placeholder="Image Link" required>
+          <input type="text" class="popup-box__text popup-box__text_type_card" placeholder="Title" required>
+          <input type="url" name="link" class="popup-box__text popup-box__text_type_photo" id="link" placeholder="Image Link" required>
         </div>
-        <button type="button" class="popup-box__save popup-box__save_card">Create</button>
+        <button type="submit" class="popup-box__save popup-box__save_card">Create</button>
       </form>
     </div>
 
     <div class="popup-box popup-box_type_photo">
       <figure class="popup-box__container popup-box__container_type_photo">
-        <img class="popup-box__image" alt="">
+        <img class="popup-box__image" alt="#">
         <button class="popup-box__exit popup-box__exit_preview" type="button" ></button>
         <figcaption class="popup-box__caption" style="color:white; font-weight: normal; font-size: 12px; line-height: 15px; margin: 10px auto 0 0;"></figcaption>
       </figure> 
@@ -68,7 +64,7 @@
   <template id="card-template">
     <article class="photo-grid">
       <button class="photo-grid__delete" type="button"></button>
-      <img class="photo-grid__photo" alt="profile content">
+      <img class="photo-grid__photo" alt="#">
       <div class="photo-grid__content">
         <h2 class="photo-grid__title"></h2>
         <button class="photo-grid__heart" type="button"></button>
