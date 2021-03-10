@@ -1,0 +1,12 @@
+span.popup-box__text_type_error {
+  color: rgb(255,0,0,1);
+  font-size: 12px;
+  line-height: 15px;
+  margin-bottom: 15px;
+}
+
+input.popup-box__text_type_error {
+  color: black;
+  border-bottom: 1px solid rgb(255,0,0,1);
+
+}

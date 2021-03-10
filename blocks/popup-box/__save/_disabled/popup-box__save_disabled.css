@@ -1,0 +1,6 @@
+.popup-box__save_disabled {
+  color:rgba(0, 0, 0, 0.2);
+  background-color:rgb(246,246,246,1);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  
+}

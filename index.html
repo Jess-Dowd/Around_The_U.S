@@ -33,8 +33,12 @@
         <button class="popup-box__exit popup-box__exit_type_profile" type="button"></button>
         <h2 class="popup-box__title">Edit profile</h2>
         <div class="popup-box__input">
-          <input type="text" name="name-text-field" class="popup-box__text popup-box__text_type_name" placeholder="name" required>
-          <input type="text" name="about-text-field" class="popup-box__text popup-box__text_about" id="about" placeholder="profession" required>
+          <input id="profile-name" type="text" name="name-text-field" class="popup-box__text popup-box__text_type_name" placeholder="name" required minlength="2" maxlength="40">
+          <span id="profile-name-error" class="popup-box__text_type_error"></span>
+
+          <input id="profile-text" type="text" name="about-text-field" class="popup-box__text popup-box__text_about" id="about" placeholder="profession" required minlength="2" maxlength="200">
+          <span id="profile-text-error" class="popup-box__text_type_error"></span>
+
         </div>
         <button type="submit" class="popup-box__save popup-box__save_profile">Save</button>
       </form>
@@ -45,8 +49,12 @@
         <button class="popup-box__exit popup-box__exit_type_add-card" type="button" ></button>
         <h2 class="popup-box__title">New Place</h2>
         <div class="popup-box__input">
-          <input type="text" class="popup-box__text popup-box__text_type_card" placeholder="Title" required>
-          <input type="url" name="link" class="popup-box__text popup-box__text_type_photo" id="link" placeholder="Image Link" required>
+          <input id="card-title" type="text" class="popup-box__text popup-box__text_type_card" placeholder="Title" required minlength="1" maxlength="30">
+          <span id="card-title-error" class="popup-box__text_type_error"></span>
+
+          <input id="card-url" type="url" name="link" class="popup-box__text popup-box__text_type_photo" id="link" placeholder="Image Link" required>
+          <span id="card-url-error" class="popup-box__text_type_error"></span>
+
         </div>
         <button type="submit" class="popup-box__save popup-box__save_card">Create</button>
       </form>
@@ -73,6 +81,7 @@
   </template>
 
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validation.js"></script>
 
 </body>
 
