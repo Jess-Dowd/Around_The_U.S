@@ -10,6 +10,7 @@
 @import url(./__container/_type/popup-box__container_type_photo.css);
 @import url(./__caption/popup-box__caption.css);
 @import url(./__save/_disabled/popup-box__save_disabled.css);
+@import url(./__error/popup-box__error.css);
 
 .popup-box {
   display: flex;
