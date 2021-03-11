@@ -40,6 +40,8 @@ const nameInput = document.querySelector(".popup-box__text_type_name");
 const jobInput = document.querySelector(".popup-box__text_about");
 const link = document.querySelector(".popup-box__text_type_photo");
 const photoName = document.querySelector(".popup-box__text_type_card");
+const modalRoot = document.querySelector(".popup-box");
+const modal = document.querySelector(".popup-box__container");
 
 /////////////////////////////////
 ///Buttons and other DOM elements 
@@ -66,11 +68,43 @@ const placesList = document.querySelector(".grid-container");
 function togglePopupBox(modalWindow) {
   modalWindow.classList.toggle("popup-box_open");
 };
+
+const handleEsc =(evt) => {
+  const activePopup = document.querySelector(".popup-box_open");
+
+  if (evt.key === "Escape") {
+    togglePopupBox(activePopup)
+  }
+};
+
+document.addEventListener("keydown", handleEsc);
+
 addCardButton.addEventListener("click", () => togglePopupBox(addCardModal));
 addCardModalCloseButton.addEventListener("click", () => togglePopupBox(addCardModal));
 profileModalCloseButton.addEventListener("click", () => togglePopupBox(addProfileInfo));
 photoPreviewCloseButton.addEventListener("click", () => togglePopupBox(photoModal));
 
+addCardModal.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup-box')) {
+    togglePopupBox(addCardModal);
+  }
+});
+
+addProfileInfo.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup-box')) {
+    togglePopupBox(addProfileInfo);
+    console.log("first");
+  }
+  console.log("second");
+});
+
+photoModal.addEventListener('click', (evt) => {
+  if (evt.target.classList.contains('popup-box')) {
+    togglePopupBox(photoModal);
+    console.log("first");
+  }
+  console.log("second");
+});
 
 function openProfileModel() {
   if (!addProfileInfo.classList.contains("open")) {
@@ -79,6 +113,7 @@ function openProfileModel() {
   }
 togglePopupBox(addProfileInfo);
 }
+
 openBox.addEventListener("click", () => openProfileModel());
 
 function createCard(placeLink, placeName) {
