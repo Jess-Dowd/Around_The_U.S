@@ -77,7 +77,14 @@ const handleEsc =(evt) => {
   }
 };
 
-document.addEventListener("keydown", handleEsc);
+function togglePopupBox(modalWindow) {
+  modalWindow.classList.toggle("popup-box_open");
+  if ( modalWindow.classList.contains("popup-box_open")) { 
+    document.addEventListener("keydown", handleEsc); 
+  } else {
+    document.removeEventListener("keydown", handleEsc); 
+  }
+};
 
 addCardButton.addEventListener("click", () => togglePopupBox(addCardModal));
 addCardModalCloseButton.addEventListener("click", () => togglePopupBox(addCardModal));
