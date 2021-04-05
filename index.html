@@ -49,10 +49,10 @@
         <button class="popup-box__exit popup-box__exit_type_add-card" type="button" ></button>
         <h2 class="popup-box__title">New Place</h2>
         <div class="popup-box__input">
-          <input id="card-title" type="text" class="popup-box__text popup-box__text_type_card" placeholder="Title" required minlength="1" maxlength="30">
+          <input id="name" type="text" name="name" class="popup-box__text popup-box__text_type_card" placeholder="Title" required minlength="1" maxlength="30">
           <span id="card-title-error" class="popup-box__error"></span>
 
-          <input id="card-url" type="url" name="link" class="popup-box__text popup-box__text_type_photo" 
+          <input id="link" type="url" name="link" class="popup-box__text popup-box__text_type_photo" 
           placeholder="Image Link" required>
           <span id="card-url-error" class="popup-box__error"></span>
 
@@ -70,7 +70,7 @@
     </div>
 
   </div>
-  <template id="card-template">
+  <template id="card-template" class="card-template">
     <article class="photo-grid">
       <button class="photo-grid__delete" type="button"></button>
       <img class="photo-grid__photo" src="#" alt="#">
@@ -81,8 +81,9 @@
     </article>
   </template>
 
-  <script src="./scripts/script.js"></script>
-  <script src="./scripts/validation.js"></script>
+  <script type="module" src="./script/index.js"></script>
+  <script type="module" src="./script/formValidator.js"></script>
+  <script type="module" src="./script/Card.js"></script>
 
 </body>
 

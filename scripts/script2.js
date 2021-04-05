@@ -1,3 +1,33 @@
+import FormValidator from './FormValidator2.js';
+//import Card from './Card.js';
+
+const config = {
+  modalSelector: ".popup-box",
+  formSelector: ".popup-box__container",
+  inputSelector: ".popup-box__text",
+  submitButtonSelector: ".popup-box__save",
+  exitButtonSelector: ".popup-box__exit",
+  inactiveButtonClass: "popup-box__save_disabled",
+  inputErrorClass: "popup-box__error",
+  errorClass: "popup-box__error_visible"
+};
+
+const addCardModal = document.querySelector(".popup-box_type_card");
+const addProfileInfo = document.querySelector(".popup-box_type_profile");
+
+const cardForm = addCardModal.querySelector(".popup-box__container_type_card");
+const profileForm = addProfileInfo.querySelector(".popup-box__container_type_profile");
+
+const editFormValidator = new FormValidator(config, profileForm);
+const addFormValidator = new FormValidator(config, cardForm);
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
+//const card = new Card(config, cardForm);
+
+//card.generateCard();
+
 ///////////////
 ///Declarations 
 ///////////////
@@ -31,11 +61,10 @@ const initialCards = [
 ////////////
 ///Modals
 ////////////  
-const addCardModal = document.querySelector(".popup-box_type_card");
-const addProfileInfo = document.querySelector(".popup-box_type_profile");
+
+
 const photoModal = document.querySelector(".popup-box_type_photo");
-const cardForm = document.querySelector(".popup-box__container_type_card");
-const profileForm = document.querySelector(".popup-box__container_type_profile");
+
 const nameInput = document.querySelector(".popup-box__text_type_name");
 const jobInput = document.querySelector(".popup-box__text_about");
 const link = document.querySelector(".popup-box__text_type_photo");
@@ -97,17 +126,17 @@ addCardModal.addEventListener('click', (evt) => {
 addProfileInfo.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup-box')) {
     togglePopupBox(addProfileInfo);
-    console.log("1");
+    console.log("01");
   }
-  console.log("2");
+  console.log("02");
 });
 
 photoModal.addEventListener('click', (evt) => {
   if (evt.target.classList.contains('popup-box')) {
     togglePopupBox(photoModal);
-    console.log("3");
+    console.log("03");
   }
-  console.log("4");
+  console.log("04");
 });
 
 function openProfileModel() {
