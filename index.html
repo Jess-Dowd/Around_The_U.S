@@ -23,13 +23,14 @@
         <button class="profile__photo-button" type="submit" aria-label="add photo"></button>
       </section>
       <section class="grid-container"></section>
+      
     </main>
     <footer class="footer">
       <p class="footer__text">© 2020 Around The U.S.</p>
     </footer>
 
     <div class="popup-box popup-box_type_profile">
-      <form class="popup-box__container popup-box__container_type_profile" name="edit-profile">
+      <form class="popup-box__container popup-box__container_type_profile" id='popup-box__container_type_profile' name="edit-profile">
         <button class="popup-box__exit popup-box__exit_type_profile" type="button"></button>
         <h2 class="popup-box__title">Edit profile</h2>
         <div class="popup-box__input">
@@ -45,15 +46,14 @@
     </div>
 
     <div class="popup-box popup-box_type_card">
-      <form class="popup-box__container popup-box__container_type_card" name="edit-profile">
+      <form class="popup-box__container popup-box__container_type_card" id="popup-box__container_type_card" name="add-card">
         <button class="popup-box__exit popup-box__exit_type_add-card" type="button" ></button>
         <h2 class="popup-box__title">New Place</h2>
         <div class="popup-box__input">
-          <input id="name" type="text" name="name" class="popup-box__text popup-box__text_type_card" placeholder="Title" required minlength="1" maxlength="30">
+          <input id="card-title" type="text" name="name" class="popup-box__text popup-box__text_type_card" placeholder="Title" required minlength="1" maxlength="30">
           <span id="card-title-error" class="popup-box__error"></span>
 
-          <input id="link" type="url" name="link" class="popup-box__text popup-box__text_type_photo" 
-          placeholder="Image Link" required>
+          <input id="card-url" type="url" name="link" class="popup-box__text popup-box__text_type_photo" placeholder="Image Link" required>
           <span id="card-url-error" class="popup-box__error"></span>
 
         </div>
@@ -81,9 +81,9 @@
     </article>
   </template>
 
-  <script type="module" src="./script/index.js"></script>
-  <script type="module" src="./script/formValidator.js"></script>
-  <script type="module" src="./script/Card.js"></script>
+  <script type="module" src="./scripts/index.js"></script>
+  <script type="module" src="./scripts/Card.js"></script>
+  <script type="module" src="./scripts/FormValidator.js"></script>
 
 </body>
 
