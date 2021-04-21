@@ -1,5 +1,4 @@
-
-.photo-grid__heart {
+.photo-grid__delete {
   margin: auto 23px auto auto;
   opacity: 1;
   transition-property: opacity;
@@ -9,14 +8,17 @@
   border: none;
   outline: none;
   background-color: transparent;
-  background-image: url(../../../images/heart.svg);
+  background-image: url(../../../../images/trash.svg);
   background-repeat: no-repeat;
   background-position: center;
-  width: 20px;
-  height: 18px;
+  width: 18px;
+  height: 19px;
+  position: relative;
+  top: 30px;
+  right: -250px;
 }
 
-.photo-grid__heart:hover {
+.photo-grid__delete:hover {
   opacity: 0.6;
   cursor: pointer;
 }

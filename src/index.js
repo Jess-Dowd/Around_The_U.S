@@ -1,6 +1,7 @@
-import FormValidator from './formValidator.js';
-import Card from './Card.js';
-
+import './styles/index.css'; 
+import FormValidator from './scripts/FormValidator.js';
+import Card from './scripts/Card.js';
+//////////"rm -rf dist && webpack"
 ///validation////
 const defaultConfig = {
   inputSelector: ".popup-box__text",
