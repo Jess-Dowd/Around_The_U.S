@@ -6,46 +6,6 @@ class PopupWithForm extends Popup {
         this._handleFormSubmit = handleFormSubmit
     }
 
-    // close(name, job) {
-    //     this._popupElement.querySelector(".popup-box__text_type_name").value = name;
-    //     this._popupElement.querySelector(".popup-box__text_about").value = job;
-    //     super.open();
-    // }
-
-    // _getInputValues() {
-    //     const inputValue = {
-    //          this._popupElement.querySelector('.popupBox__text').value,
-    //          this._popupElement.querySelector(popupSelector).value,
-    //     },
-    //     return currentUserInfo;
-    // }
-
-    // _getInputValues() {
-    //     const cardImage = this._card.querySelector(".photo-grid__photo")
-    //     const cardTitle = this._card.querySelector(".photo-grid__title");
-    //     const inputValue = {
-    //          this._popupElement.querySelector('.popupBox__text').value,
-    //          this._popupElement.querySelector(popupSelector).value,
-    //     },
-    //     return currentUserInfo;
-    // }
-
-    //    InputValue = this._popupElement.querySelector(".popup-box__text").value;
-    // getUserInfo() {
-    //     const currentUserInfo = {
-    //         name: this._name.textContent,
-    //         job: this._job.textContent,
-    //     }, 
-    //     return currentUserInfo;
-    // };
-    // setEventListenerse(e) {
-    //     evt.preventDefault();
-    //     this._popupElement.addEventListener('submit', this._handleFormSubmit);
-    //     super.setEventListeners();
-    //     _getInputValues()
-    //     this.close
-    // }
-
     _getInputValues(input) {
         // const currentInput = this._popupElement.querySelectorAll('.popup-box__text').value ;  
         // const currentInput = this._popupElement.querySelectorAll(".popup-box__text");     
@@ -72,6 +32,45 @@ export default PopupWithForm;
 
 
 
+// close(name, job) {
+//     this._popupElement.querySelector(".popup-box__text_type_name").value = name;
+//     this._popupElement.querySelector(".popup-box__text_about").value = job;
+//     super.open();
+// }
+
+// _getInputValues() {
+//     const inputValue = {
+//         this._popupElement.querySelector('.popupBox__text').value,
+//         this._popupElement.querySelector(popupSelector).value,
+//     },
+//     return currentUserInfo;
+// }
+
+// _getInputValues() {
+//     const cardImage = this._card.querySelector(".photo-grid__photo")
+//     const cardTitle = this._card.querySelector(".photo-grid__title");
+//     const inputValue = {
+//         this._popupElement.querySelector('.popupBox__text').value,
+//         this._popupElement.querySelector(popupSelector).value,
+//     },
+//     return currentUserInfo;
+// }
+
+// InputValue = this._popupElement.querySelector(".popup-box__text").value;
+// getUserInfo() {
+//     const currentUserInfo = {
+//         name: this._name.textContent,
+//         job: this._job.textContent,
+//     },
+//     return currentUserInfo;
+// };
+// setEventListenerse(e) {
+//     evt.preventDefault();
+//     this._popupElement.addEventListener('submit', this._handleFormSubmit);
+//     super.setEventListeners();
+//     _getInputValues()
+//     this.close
+// }
 // profileForm.addEventListener('submit', handleProfileFormSubmit);
 // cardForm.addEventListener("submit", handleCardSubmit);
 

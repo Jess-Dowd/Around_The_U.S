@@ -4,23 +4,6 @@ class Popup {
         this._handleEscClose = this._handleEscClose.bind(this);
     }
 
-    // togglePopupBox(modalWindow) {
-    //     modalWindow.classList.toggle("popup-box_open");
-    //     if ( modalWindow.classList.contains("popup-box_open")) { 
-    //       document.addEventListener("keydown", handleEsc); 
-    //     } else {
-    //       document.removeEventListener("keydown", handleEsc); 
-    //     }
-    // }
-
-    // handleEsc =(evt) => {
-    //     const activePopup = document.querySelector(".popup-box_open");
-      
-    //     if (evt.key === "Escape") {
-    //       togglePopupBox(activePopup)
-    //     }
-    // };
-
     ///open
     open() {
         this._popupElement.classList.add("popup-box_open");
@@ -51,6 +34,24 @@ class Popup {
 }
 
 export default Popup;
+
+
+// togglePopupBox(modalWindow) {
+//     modalWindow.classList.toggle("popup-box_open");
+//     if (modalWindow.classList.contains("popup-box_open")) {
+//         document.addEventListener("keydown", handleEsc);
+//     } else {
+//         document.removeEventListener("keydown", handleEsc);
+//     }
+// }
+
+// handleEsc = (evt) => {
+//     const activePopup = document.querySelector(".popup-box_open");
+
+//     if (evt.key === "Escape") {
+//         togglePopupBox(activePopup)
+//     }
+// };
 
 // const addProfileInfo = new PopupWithForm(".popup-box_type_profile");
 // const addCardModal = new PopupWithForm(".popup-box_type_card");

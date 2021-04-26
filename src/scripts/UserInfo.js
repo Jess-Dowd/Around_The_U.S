@@ -11,8 +11,7 @@ class UserInfo {
         
     };
 
-
-    // his._name.value = currentName.textContent    // this._job.value = currentBio.textContent
+    // this._name.value = currentName.textContent    // this._job.value = currentBio.textContent
     setUserInfo(nameInput, jobInput) {  
         this._name.textContent = document.querySelector(nameInput);
         this._job.textContent = document.querySelector(jobInput); 

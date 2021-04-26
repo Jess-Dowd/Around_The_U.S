@@ -13,14 +13,15 @@ class Section {
 
     // addItem() {
         
-    //     // const newItem = {items}
-    //     // return newItem
+        // const newItem = {items}
+        // return newItem
     // }
 }
 
-// const placesList = document.querySelector(".grid-container");
+
 export default Section;
 
+// const placesList = document.querySelector(".grid-container");
 // function renderCard(data) {
 //     const card = new Card(data, '#card-template');
 //     placesList.prepend(card.generateCard(data));

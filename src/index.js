@@ -1,14 +1,15 @@
 import './styles/index.css'; 
 import FormValidator from './scripts/FormValidator.js';
-import Card from './scripts/Card.js';
+// import Card from './scripts/Card.js';
 import UserInfo from './scripts/UserInfo.js';
-import PopupWithForm from './scripts/PopupWithForm.js';
-import PopupWithImage from './scripts/PopupWithImage.js';
-import Section from './scripts/Section.js';
+// import PopupWithForm from './scripts/PopupWithForm.js';
+// import PopupWithImage from './scripts/PopupWithImage.js';
+// import Section from './scripts/Section.js';
 
 
-//////////
+/////////////////
 ///validation////
+/////////////////
 const defaultConfig = {
   inputSelector: ".popup-box__text",
   submitButtonSelector: ".popup-box__save",
@@ -27,7 +28,22 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 
-//// render initial cards////
+//////////////////
+//profile model///
+/////////////////
+const userInfo = new UserInfo('.profile__name', '.profile__bio');
+const profilePopup = new PopupWithForm(userInfo.setUserInfo(".popup-box__text_type_name", '.popup-box__text_about'), ".popup-box__container_type_profile")
+
+document.querySelector('.profile__text-button').addEventListener('click', () => {
+  profilePopup.open() ///open the popup and add listener for esc key
+  userInfo.getUserInfo(document.querySelector(".popup-box__text_type_name").value, document.querySelector(".popup-box__text_about").value); ///fill in the input fields with current data
+  profilePopup.setEventListeners(); ///set event listener for exit, submit, and click outside of popup exit
+}
+);
+
+/////////////////////////
+///render initial cards//
+////////////////////////
 // const initialCards = [
 //   {
 //     name: "Yosemite Valley",
@@ -55,6 +71,12 @@ addFormValidator.enableValidation();
 //   }
 // ]; 
 
+
+// initialCards.forEach(card => {
+//   card = new Card(initialCards, '#card-template')
+//   cardList.renderer(card.generateCard(data));
+// });
+
 // function handleCardSubmit(evt) {
 //     evt.preventDefault();
 //     const newCardData = {
@@ -74,6 +96,7 @@ addFormValidator.enableValidation();
 //   const card = new Card(data, '#card-template');
 //   placesList.prepend(card.generateCard(data));
 // }
+
 // function handleCardSubmit(evt) {
 //     evt.preventDefault();
 //     const newCardData = {
@@ -83,10 +106,9 @@ addFormValidator.enableValidation();
 // renderCard(newCardData);
 // togglePopupBox(addCardModal);
 // }
-// initialCards.forEach(card => {
-//   card = new Card(initialCards, '#card-template')
-//   cardList.renderer(card.generateCard(data));
-// });
+
+
+
 // const initialCard = new Card(initialCards, '#card-template');
 
 // ////////// card model
@@ -98,36 +120,36 @@ addFormValidator.enableValidation();
 //   // cardList.renderer();
 //   // card.generateCard(data)
 // });
+
 // const cardNameInput = document.querySelector(".popup-box__text_type_card");
 // const cardLinkInput = document.querySelector(".popup-box__text_type_photo");
 // renderCard(newCardData);
 
-const newCardData = {
-  name: document.querySelector(".popup-box__text_type_card").value,
-  link: document.querySelector(".popup-box__text_type_photo").value
-}
 
-const cardList = new Section(newCard, renderer, ".grid-container")
-const newCard = new Card(newCardData, '#card-template');
-const addCardPopup = new PopupWithForm(newCard.generateCard(), ".popup-box__container_type_card")
 
-document.querySelector(".profile__photo-button").addEventListener('click', () => {
-  addCardPopup.open()  ///open the popup and add listener for esc key
-  // const card = new Card(data, '#card-template');
-  addCardPopup.setEventListeners(); ///set event listener for exit, submit, and click outside of popup exit, reset inputs
-}
-);
 
-///profile model
-const userInfo = new UserInfo('.profile__name', '.profile__bio');
-const profilePopup = new PopupWithForm(userInfo.setUserInfo(".popup-box__text_type_name", '.popup-box__text_about'), ".popup-box__container_type_profile")
 
-document.querySelector('.profile__text-button').addEventListener('click', () => {
-  profilePopup.open() ///open the popup and add listener for esc key
-  userInfo.getUserInfo(document.querySelector(".popup-box__text_type_name").value, document.querySelector(".popup-box__text_about").value); ///fill in the input fields with current data
-  profilePopup.setEventListeners(); ///set event listener for exit, submit, and click outside of popup exit
-}
-);
+
+// const newCardData = {
+//   name: document.querySelector(".popup-box__text_type_card").value,
+//   link: document.querySelector(".popup-box__text_type_photo").value
+// }
+
+// const cardList = new Section(newCard, renderer, ".grid-container")
+// const newCard = new Card(newCardData, '#card-template');
+// const addCardPopup = new PopupWithForm(newCard.generateCard(), ".popup-box__container_type_card")
+
+// document.querySelector(".profile__photo-button").addEventListener('click', () => {
+//   addCardPopup.open()  ///open the popup and add listener for esc key
+//   // const card = new Card(data, '#card-template');
+//   addCardPopup.setEventListeners(); ///set event listener for exit, submit, and click outside of popup exit, reset inputs
+// }
+// );
+
+
+
+
+
   // document.querySelector(".popup-box__text_type_name").value = ""; 
   // document.querySelector(".popup-box__text_about").value = "";   
 ///preview photo modal
