@@ -76,13 +76,16 @@ const initialCards = [
   }
 ];
 
+const imagePopup = new PopupWithImage("popup-box_type_photo");
+imagePopup.setEventListeners();
+
 const defaultCards = new Section(
   initialCards, {renderer: (item) => {
 
     const card = new Card({
 
-      card: item, handlePreviewImage: ({ name, link }) => {  //need inputvalues, handlepreview, cardtemplateseect
-        imagePopup.open({ name, link });
+      card: item, handlePreviewImage: () => {  //need inputvalues, handlepreview, cardtemplateseect
+        imagePopup.open( item.name, item.link );
       }
 
     }, '#card-template'
@@ -100,7 +103,7 @@ const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
     
 
     const card = new Card(
-      getInputValues(), {handlePreviewImage: ({ name,link }) => {
+      getInputValues(), {handlePreviewImage: ({ name, link }) => {
         imagePopup.open({ name, link });
       }
     }, '#card-template'
@@ -132,5 +135,3 @@ addCardButton.addEventListener("click", () => cardPopup.open());
 //image modal///////
 //////////////////////
 
-const imagePopup = new PopupWithImage("popup-box_type_photo");
-imagePopup.setEventListeners();

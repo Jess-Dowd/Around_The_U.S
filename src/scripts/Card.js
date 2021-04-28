@@ -1,7 +1,7 @@
 class Card {
-  constructor({data, handlePreviewImage}, templateSelector) {
-    this._link = data.link;
-    this._name = data.name;
+  constructor({card, handlePreviewImage}, templateSelector) {
+    this._link = card.link;
+    this._name = card.name;
     this._templateSelector = templateSelector;
     this._handlePreviewImage = handlePreviewImage;
   }
