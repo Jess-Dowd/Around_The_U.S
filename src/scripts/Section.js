@@ -1,28 +1,21 @@
-import { container } from "webpack";
+// import { container } from "webpack";
 
 class Section {
-    constructor({items, renderer}, list) {
-        this._list = document.querySelector(list);
-        this._items = items,
-        this._renderer = renderer
+    constructor(items, { renderer }, containerSelector) {
+        this._container = document.querySelector(containerSelector);
+        this._renderer = renderer;
+        this.items = items;
       }
+        renderItems() {
+            this.items.forEach((item) => {
+                this._renderer(item);
+            });
+        };
 
-    renderer() {
-        this._list.prepend(this._items);
+    addItem(element) {
+        this._container.append(element);
     }
 
-    // addItem() {
-        
-        // const newItem = {items}
-        // return newItem
-    // }
 }
 
-
 export default Section;
-
-// const placesList = document.querySelector(".grid-container");
-// function renderCard(data) {
-//     const card = new Card(data, '#card-template');
-//     placesList.prepend(card.generateCard(data));
-//   }

@@ -26,7 +26,7 @@ class Popup {
     ///seteventlisteners
     setEventListeners() {
         this._popupElement.addEventListener('click', (e) => {
-            if (e.target.classList.contains('popup-box') || e.target.classList.contains('popup-box__exit') ){
+            if (e.target.classList.contains('popup-box') ){
               this.close();
             }
         })
@@ -34,44 +34,3 @@ class Popup {
 }
 
 export default Popup;
-
-
-// togglePopupBox(modalWindow) {
-//     modalWindow.classList.toggle("popup-box_open");
-//     if (modalWindow.classList.contains("popup-box_open")) {
-//         document.addEventListener("keydown", handleEsc);
-//     } else {
-//         document.removeEventListener("keydown", handleEsc);
-//     }
-// }
-
-// handleEsc = (evt) => {
-//     const activePopup = document.querySelector(".popup-box_open");
-
-//     if (evt.key === "Escape") {
-//         togglePopupBox(activePopup)
-//     }
-// };
-
-// const addProfileInfo = new PopupWithForm(".popup-box_type_profile");
-// const addCardModal = new PopupWithForm(".popup-box_type_card");
-// const photoModal = new Popup(".popup-box_type_photo");
-
-// profileForm.addEventListener('click', (evt) => {
-//     if (evt.target.classList.contains('popup-box')) {
-//       togglePopupBox(profileForm);
-//     }
-//   });
-  
-//   addProfileInfo.addEventListener('click', (evt) => {
-  
-//     if (evt.target.classList.contains('popup-box')) {
-//       togglePopupBox(addProfileInfo);
-//     }
-//   });
-  
-//   photoModal.addEventListener('click', (evt) => {
-//     if (evt.target.classList.contains('popup-box')) {
-//       togglePopupBox(photoModal);
-//     }
-//   });

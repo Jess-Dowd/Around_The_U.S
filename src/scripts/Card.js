@@ -45,35 +45,3 @@ class Card {
 }
 
 export default Card;
-
-
-
-//   const handlePreviewImage = (e) => {
-//     const photoModal = document.querySelector(".popup-box_type_photo");
-//     const popupImage = document.querySelector(".popup-box__image");//
-//     const popupCaption = document.querySelector(".popup-box__caption");//
-
-//     const thisCard = e.target.closest('.photo-grid')
-//     popupImage.src = e.target.src;
-//     popupCaption.textContent = thisCard.querySelector('.photo-grid__title').textContent;
-//     popupImage.alt = `Photo of ${e.target.src}`;
-//     togglePopupBox(photoModal)
-// };
-
-// function togglePopupBox(modalWindow) {
-//   modalWindow.classList.toggle("popup-box_open");
-//   if ( modalWindow.classList.contains("popup-box_open")) { 
-//     document.addEventListener("keydown", handleEsc); 
-//   } else {
-//     document.removeEventListener("keydown", handleEsc); 
-//   }
-// };
-
-// const handleEsc = (evt) => {
-//   evt.preventDefault();
-//   const activePopup = document.querySelector(".popup-box_open");
-
-//   if (evt.key === "Escape") {
-//     togglePopupBox(activePopup)
-//   }
-// };
