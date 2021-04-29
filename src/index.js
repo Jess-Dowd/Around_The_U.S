@@ -76,7 +76,7 @@ const initialCards = [
   }
 ];
 
-const imagePopup = new PopupWithImage("popup-box_type_photo");
+const imagePopup = new PopupWithImage(".popup-box_type_photo");
 imagePopup.setEventListeners();
 
 const defaultCards = new Section(
