@@ -28,15 +28,15 @@
       <p class="footer__text">© 2020 Around The U.S.</p>
     </footer>
 
-    <div class="popup-box popup-box_type_profile">
+    <div class="popup-box popup-box_type_profile" id="popup-box">
       <form class="popup-box__container popup-box__container_type_profile" id='popup-box__container_type_profile' name="edit-profile">
         <button class="popup-box__exit popup-box__exit_type_profile" type="button"></button>
         <h2 class="popup-box__title">Edit profile</h2>
         <div class="popup-box__input">
-          <input id="profile-name" type="text" name="name" class="popup-box__text popup-box__text_type_name" placeholder="name" required minlength="2" maxlength="40">
+          <input id="profile-name" type="text" name="field1" class="popup-box__text popup-box__text_type_name" placeholder="name" required minlength="2" maxlength="40">
           <span id="profile-name-error" class="popup-box__error"></span>
 
-          <input id="profile-text" type="text" name="job" class="popup-box__text popup-box__text_about" placeholder="profession" required minlength="2" maxlength="200">
+          <input id="profile-text" type="text" name="field2" class="popup-box__text popup-box__text_about" placeholder="profession" required minlength="2" maxlength="200">
           <span id="profile-text-error" class="popup-box__error"></span>
 
         </div>
@@ -44,15 +44,15 @@
       </form>
     </div>
 
-    <div class="popup-box popup-box_type_card">
+    <div class="popup-box popup-box_type_card" id="popup-box">
       <form class="popup-box__container popup-box__container_type_card" id="popup-box__container_type_card" name="add-card">
         <button class="popup-box__exit popup-box__exit_type_add-card" type="button" ></button>
         <h2 class="popup-box__title">New Place</h2>
         <div class="popup-box__input">
-          <input id="card-title" type="text" name="title" class="popup-box__text popup-box__text_type_card" placeholder="Title" required minlength="1" maxlength="30">
+          <input id="card-title" type="text" name="field1" class="popup-box__text popup-box__text_type_card" placeholder="Title" required minlength="1" maxlength="30">
           <span id="card-title-error" class="popup-box__error"></span>
 
-          <input id="card-url" type="url" name="link" class="popup-box__text popup-box__text_type_photo" placeholder="Image Link" required>
+          <input id="card-url" type="url" name="field2" class="popup-box__text popup-box__text_type_photo" placeholder="Image Link" required>
           <span id="card-url-error" class="popup-box__error"></span>
 
         </div>
@@ -60,7 +60,7 @@
       </form>
     </div>
 
-    <div class="popup-box popup-box_type_photo">
+    <div class="popup-box popup-box_type_photo" id="popup-box">
       <figure class="popup-box__container popup-box__container_type_photo">
         <img class="popup-box__image" src="#" alt="#">
         <button class="popup-box__exit popup-box__exit_preview" type="button" ></button>
@@ -79,7 +79,6 @@
       </div>
     </article>
   </template>
-
 
 </body>
 

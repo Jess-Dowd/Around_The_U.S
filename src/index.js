@@ -1,8 +1,15 @@
-import './styles/index.css'; 
+import './styles/index.css';
 import FormValidator from './scripts/FormValidator.js';
 import Card from './scripts/Card.js';
-//////////"rm -rf dist && webpack"
+import UserInfo from './scripts/UserInfo.js';
+import PopupWithForm from './scripts/PopupWithForm.js';
+import PopupWithImage from './scripts/PopupWithImage.js';
+import Section from './scripts/Section.js';
+
+
+/////////////////
 ///validation////
+/////////////////
 const defaultConfig = {
   inputSelector: ".popup-box__text",
   submitButtonSelector: ".popup-box__save",
@@ -11,19 +18,50 @@ const defaultConfig = {
   errorClass: "popup-box__error_visible"
 };
 
-const addProfileInfo = document.querySelector(".popup-box_type_profile");
-const addCardModal = document.querySelector(".popup-box_type_card");
-
-const cardForm = addCardModal.querySelector(".popup-box__container_type_card");
-const profileForm = addProfileInfo.querySelector(".popup-box__container_type_profile");
-
-const editFormValidator = new FormValidator(defaultConfig, profileForm);
-const addFormValidator = new FormValidator(defaultConfig, cardForm);
+const editFormValidator = new FormValidator(defaultConfig, document.querySelector(".popup-box__container_type_profile"));
+const addFormValidator = new FormValidator(defaultConfig, document.querySelector(".popup-box__container_type_card"));
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+//////////////////
+//profile model///
+/////////////////
+const nameInput = document.querySelector(".popup-box__text_type_name")
+const jobInput = document.querySelector(".popup-box__text_about")
 
-////initial cards////
+const userInfo = new UserInfo('.profile__name', '.profile__bio' ); ///get user info
+
+const profilePopup = new PopupWithForm(".popup-box__container_type_profile", {
+  handleFormSubmit: () => { ///create profile popup and set profile data on submit 
+    userInfo.setUserInfo(nameInput, jobInput)
+  }
+})
+
+profilePopup.setEventListeners();  ///set event listener for exit, submit, and click outside of popup exit
+
+document.querySelector('.profile__text-button').addEventListener('click', () => {
+  profilePopup.open()
+  const getValue = userInfo.getUserInfo();
+  nameInput.value = getValue.name;   ///fill in the input fields with current data
+  jobInput.value = getValue.job;
+    ///open the popup and add listener for esc key  
+})
+
+///////////////////////
+//image modal///////
+//////////////////////
+const imagePopup = new PopupWithImage(".popup-box_type_photo");
+imagePopup.setEventListeners();
+
+//////////////////
+//card model///
+/////////////////
+const addCardButton = document.querySelector(".profile__photo-button");
+addCardButton.addEventListener("click", () => cardPopup.open());
+
+///////////////////////
+//render initial cards//
+//////////////////////
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -49,116 +87,46 @@ const initialCards = [
     name: "Lago di Braies",
     link: "https://code.s3.yandex.net/web-code/lago.jpg"
   }
-]; 
+];
 
-//////constants////////////////////////////////
+const defaultCards = new Section(
+  initialCards, {renderer: (item) => {
 
-// //card wrapper///
-const placesList = document.querySelector(".grid-container");
-const photoModal = document.querySelector(".popup-box_type_photo");
+    const card = new Card({
 
-// //open modal buttons//
-const openBox = document.querySelector('.profile__text-button');
-const addCardButton = document.querySelector(".profile__photo-button");
+      card: item, handlePreviewImage: () => {  //need inputvalues, handlepreview, cardtemplateseect
+        imagePopup.open( item.name, item.link );
+      }
 
-// //current profile data///
-const currentName = document.querySelector(".profile__name");
-const currentBio = document.querySelector(".profile__bio");
+    }, '#card-template'
+    )
 
-// // modal inputs//
-const nameInput = document.querySelector(".popup-box__text_type_name");
-const jobInput = document.querySelector(".popup-box__text_about");
-
-const cardNameInput = document.querySelector(".popup-box__text_type_card");
-const cardLinkInput = document.querySelector(".popup-box__text_type_photo");
-
-// ///Buttons
-const addCardModalCloseButton = document.querySelector(".popup-box__exit_type_add-card");
-const profileModalCloseButton = document.querySelector(".popup-box__exit_type_profile");
-const photoPreviewCloseButton = document.querySelector(".popup-box__exit_preview");
-
-
-/////function and handlers////////////////////////////////////////////////
-function handleOpenProfileModel() {
-  if (!addProfileInfo.classList.contains("open")) {
-    nameInput.value = currentName.textContent
-    jobInput.value = currentBio.textContent
+    defaultCards.addItem(card.generateCard());
   }
-togglePopupBox(addProfileInfo);
-}
+}, ".grid-container");
 
-  function togglePopupBox(modalWindow) {
-    modalWindow.classList.toggle("popup-box_open");
-    if ( modalWindow.classList.contains("popup-box_open")) { 
-      document.addEventListener("keydown", handleEsc); 
-    } else {
-      document.removeEventListener("keydown", handleEsc); 
-    }
+defaultCards.renderItems();
+
+///////////////////////
+//render new cards////
+//////////////////////
+
+const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
+  handleFormSubmit: (e, vals) => { ///create profile popup and set profile data on submit 
+    e.preventDefault();
+    const newCard = { name: vals.name, link: vals.link };
+    const card = new Card({
+
+      card: newCard, handlePreviewImage: () => {  //need inputvalues, handlepreview, cardtemplateseect
+        imagePopup.open(newCard.name, newCard.link);
+      }
+
+    }, '#card-template'
+    )
+
+    defaultCards.addItem(card.generateCard());
   }
-
-  const handleEsc =(evt) => {
-    const activePopup = document.querySelector(".popup-box_open");
+}, ".grid-container");
   
-    if (evt.key === "Escape") {
-      togglePopupBox(activePopup)
-    }
-  };
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  currentName.textContent = nameInput.value;
-  currentBio.textContent = jobInput.value;
-  togglePopupBox(addProfileInfo);
-}
-
-function renderCard(data) {
-  const card = new Card(data, '#card-template');
-  placesList.prepend(card.generateCard(data));
-}
-
-function handleCardSubmit(evt) {
-  evt.preventDefault();
-  const newCardData = {
-    name : cardNameInput.value,
-    link : cardLinkInput.value
-  }
-  
-  renderCard(newCardData);
-  togglePopupBox(addCardModal);
-}
-
-initialCards.forEach(card => {
-  renderCard(card);
-});
-
-////event listeners//////////////////////////////////////
-profileForm.addEventListener('submit', handleProfileFormSubmit);
-
-profileForm.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup-box')) {
-    togglePopupBox(profileForm);
-  }
-});
-
-addProfileInfo.addEventListener('click', (evt) => {
-
-  if (evt.target.classList.contains('popup-box')) {
-    togglePopupBox(addProfileInfo);
-  }
-});
-
-photoModal.addEventListener('click', (evt) => {
-  if (evt.target.classList.contains('popup-box')) {
-    togglePopupBox(photoModal);
-  }
-});
-
-cardForm.addEventListener("submit", handleCardSubmit);
-
-openBox.addEventListener("click", () => handleOpenProfileModel());
-addCardButton.addEventListener("click", () => togglePopupBox(addCardModal));
-
-addCardModalCloseButton.addEventListener("click", () => togglePopupBox(addCardModal));
-profileModalCloseButton.addEventListener("click", () => togglePopupBox(addProfileInfo));
-photoPreviewCloseButton.addEventListener("click", () => togglePopupBox(photoModal));
-
+cardPopup.setEventListeners();

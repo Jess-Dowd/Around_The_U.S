@@ -1,38 +1,7 @@
-
-  const handlePreviewImage = (e) => {
-    const photoModal = document.querySelector(".popup-box_type_photo");
-    const popupImage = document.querySelector(".popup-box__image");
-    const popupCaption = document.querySelector(".popup-box__caption");
-
-    const thisCard = e.target.closest('.photo-grid')
-    popupImage.src = e.target.src;
-    popupCaption.textContent = thisCard.querySelector('.photo-grid__title').textContent;
-    popupImage.alt = `Photo of ${e.target.src}`;
-    togglePopupBox(photoModal)
-};
-
-function togglePopupBox(modalWindow) {
-  modalWindow.classList.toggle("popup-box_open");
-  if ( modalWindow.classList.contains("popup-box_open")) { 
-    document.addEventListener("keydown", handleEsc); 
-  } else {
-    document.removeEventListener("keydown", handleEsc); 
-  }
-};
-
-const handleEsc = (evt) => {
-  evt.preventDefault();
-  const activePopup = document.querySelector(".popup-box_open");
-
-  if (evt.key === "Escape") {
-    togglePopupBox(activePopup)
-  }
-};
-
 class Card {
-constructor(data, templateSelector) {
-    this._link = data.link;
-    this._name = data.name;
+  constructor({card, handlePreviewImage}, templateSelector) {
+    this._link = card.link;
+    this._name = card.name;
     this._templateSelector = templateSelector;
 }
 
@@ -52,10 +21,10 @@ _setEventListeners() {
   const likeButton = this._card.querySelector(".photo-grid__heart");
   const deleteButton = this._card.querySelector(".photo-grid__delete");
 
-  likeButton.addEventListener("click", this._handleToggleLike); 
-  deleteButton.addEventListener("click", this._handleRemoveCard); 
-  cardImage.addEventListener("click", handlePreviewImage);  
-}
+    likeButton.addEventListener("click", this._handleToggleLike);
+    deleteButton.addEventListener("click", this._handleRemoveCard);
+    cardImage.addEventListener("click", this._handlePreviewImage); 
+  }
 
 //////working on currently////// 
 generateCard() {
