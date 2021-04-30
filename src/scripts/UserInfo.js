@@ -12,8 +12,8 @@ class UserInfo {
     };
 
     setUserInfo(nameInput, jobInput) {  
-        this.name.textContent = nameInput;
-        this.job.textContent = jobInput 
+        this.name.textContent = nameInput.value;
+        this.job.textContent = jobInput.value 
     }
 }
 

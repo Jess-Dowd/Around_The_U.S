@@ -32,19 +32,32 @@ const jobInput = document.querySelector(".popup-box__text_about")
 const userInfo = new UserInfo('.profile__name', '.profile__bio' ); ///get user info
 
 const profilePopup = new PopupWithForm(".popup-box__container_type_profile", {
-  handleFormSubmit: (values) => { ///create profile popup and set profile data on submit 
-    userInfo.setUserInfo({ name: values.name, job: values.job })
+  handleFormSubmit: () => { ///create profile popup and set profile data on submit 
+    userInfo.setUserInfo(nameInput, jobInput)
   }
 })
 
 profilePopup.setEventListeners();  ///set event listener for exit, submit, and click outside of popup exit
 
 document.querySelector('.profile__text-button').addEventListener('click', () => {
+  profilePopup.open()
   const getValue = userInfo.getUserInfo();
   nameInput.value = getValue.name;   ///fill in the input fields with current data
   jobInput.value = getValue.job;
-  profilePopup.open()  ///open the popup and add listener for esc key  
+    ///open the popup and add listener for esc key  
 })
+
+///////////////////////
+//image modal///////
+//////////////////////
+const imagePopup = new PopupWithImage(".popup-box_type_photo");
+imagePopup.setEventListeners();
+
+//////////////////
+//card model///
+/////////////////
+const addCardButton = document.querySelector(".profile__photo-button");
+addCardButton.addEventListener("click", () => cardPopup.open());
 
 ///////////////////////
 //render initial cards//
@@ -76,9 +89,6 @@ const initialCards = [
   }
 ];
 
-const imagePopup = new PopupWithImage(".popup-box_type_photo");
-imagePopup.setEventListeners();
-
 const defaultCards = new Section(
   initialCards, {renderer: (item) => {
 
@@ -97,41 +107,26 @@ const defaultCards = new Section(
 
 defaultCards.renderItems();
 
-
-const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
-  handleFormSubmit: (values) => { ///create profile popup and set profile data on submit 
-    
-
-    const card = new Card(
-      getInputValues(), {handlePreviewImage: ({ name, link }) => {
-        imagePopup.open({ name, link });
-      }
-    }, '#card-template'
-    )
-
-    defaultCards.addItem(card.generateCard());
-  }, templateSelector: '#popup-box__container_type_card'
-});
-
-cardPopup.setEventListeners();
-
-
-
-//////////////////
-//card model///
-/////////////////
-const addCardButton = document.querySelector(".profile__photo-button");
-addCardButton.addEventListener("click", () => cardPopup.open());
-
 ///////////////////////
 //render new cards////
 //////////////////////
 
+const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
+  handleFormSubmit: (e, vals) => { ///create profile popup and set profile data on submit 
+    e.preventDefault();
+    const newCard = { name: vals.name, link: vals.link };
+    const card = new Card({
 
+      card: newCard, handlePreviewImage: () => {  //need inputvalues, handlepreview, cardtemplateseect
+        imagePopup.open(newCard.name, newCard.link);
+      }
 
+    }, '#card-template'
+    )
 
+    defaultCards.addItem(card.generateCard());
+  }
+}, ".grid-container");
+  
 
-///////////////////////
-//image modal///////
-//////////////////////
-
+cardPopup.setEventListeners();

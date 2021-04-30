@@ -24,7 +24,7 @@ class Card {
 
     likeButton.addEventListener("click", this._handleToggleLike);
     deleteButton.addEventListener("click", this._handleRemoveCard);
-    cardImage.addEventListener("click", this._handlePreviewImage()); 
+    cardImage.addEventListener("click", this._handlePreviewImage); 
   }
 
   generateCard() {

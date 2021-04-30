@@ -34,7 +34,7 @@ class FormValidator {
 
   _toggleButtonState(inputs) {
     const isValid = inputs.every((input) => input.validity.valid)//
-    const button = this._formElement.querySelector(this._submitButtonSelector);
+    const button = this.formElement.querySelector(this._submitButtonSelector);
 
     if(isValid) {
       button.classList.remove(this._inactiveButtonClass)

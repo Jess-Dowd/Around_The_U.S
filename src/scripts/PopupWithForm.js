@@ -6,23 +6,29 @@ class PopupWithForm extends Popup {
         this._handleFormSubmit = handleFormSubmit
     }
 
-    getInputValues() {
-            const values = {}
-            values = { name: this._popupElement.elements['field1'].value, link: this._popupElement.elements['field2'].value };
-            return values;
+    open() {
+        super.open();
+    }
+
+    _getInputValues() {  ///name, link
+        
+        return { 
+                name: this._popupElement.elements['field1'].value, 
+                link: this._popupElement.elements['field2'].value  
+        };
+        
     }
 
     setEventListeners() {
-        super.setEventListeners();
+        
         this._popupElement.addEventListener("submit", (e) => {
-            this._handleFormSubmit(e, this.getInputValues());
-            this.close();
+            this._handleFormSubmit(e, this._getInputValues());
             this._popupElement.reset();
-        })
-        const closeButton = this._popupElement.querySelector('.popup-box__exit')
-        closeButton.addEventListener('click', () => {
             this.close();
-        });
+            
+        })
+
+        super.setEventListeners();
 
     }
     
