@@ -6,14 +6,14 @@ class Popup {
 
     ///open
     open() {
-        const popupBox = this._popupElement.closest("#popup-box")
+        const popupBox = this._popupElement.closest(".popup-box")
         popupBox.classList.add("popup-box_open");
         document.addEventListener("keydown", this._handleEscClose);
     }
 
     ///close
     close() {
-        const popupBox = this._popupElement.closest("#popup-box")
+        const popupBox = this._popupElement.closest(".popup-box")
         popupBox.classList.remove("popup-box_open");
         document.removeEventListener("keydown", this._handleEscClose);
     }
@@ -27,7 +27,7 @@ class Popup {
 
     ///seteventlisteners
     setEventListeners() {
-        this._popupElement.closest("#popup-box").addEventListener('click', (e) => {
+        this._popupElement.closest(".popup-box").addEventListener('click', (e) => {
             if (e.target.classList.contains('popup-box') ){
               this.close();
             }
