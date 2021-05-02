@@ -56,8 +56,14 @@ imagePopup.setEventListeners();
 //////////////////
 //card model///
 /////////////////
+function handleOpenModalCard() {
+  cardPopup.open()
+  const saveButton = document.querySelector('.popup-box__save')
+  saveButton.classList.add('.popup-box__save_disabled')
+}
+
 const addCardButton = document.querySelector(".profile__photo-button");
-addCardButton.addEventListener("click", () => cardPopup.open());
+addCardButton.addEventListener("click", () => handleOpenModalCard() );
 
 ///////////////////////
 //render initial cards//
@@ -89,23 +95,29 @@ const initialCards = [
   }
 ];
 
-const defaultCards = new Section(
-  initialCards, {renderer: (item) => {
-
-    const card = new Card({
-
-      card: item, handlePreviewImage: () => {  //need inputvalues, handlepreview, cardtemplateseect
-        imagePopup.open( item.name, item.link );
-      }
-
-    }, '#card-template'
-    )
-
-    defaultCards.addItem(card.generateCard());
-  }
+const defaultCards = new Section (
+  initialCards, {
+    renderer: (item) => {
+      createCard(item) 
+    }
 }, ".grid-container");
 
 defaultCards.renderItems();
+
+
+
+function createCard(item) {
+  
+  const card = new Card({
+
+    card: item, handlePreviewImage: () => {  //inputvalues, handlepreview, cardtemplateselect
+      imagePopup.open(card.name, card.link)}
+    
+    }, '#card-template')
+ 
+    
+  defaultCards.addItem(card.generateCard());
+}
 
 ///////////////////////
 //render new cards////
@@ -114,17 +126,9 @@ defaultCards.renderItems();
 const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
   handleFormSubmit: (e, vals) => { ///create profile popup and set profile data on submit 
     e.preventDefault();
-    const newCard = { name: vals.name, link: vals.link };
-    const card = new Card({
+    const item = { name: vals.name, link: vals.link };
+    createCard(item)
 
-      card: newCard, handlePreviewImage: () => {  //need inputvalues, handlepreview, cardtemplateseect
-        imagePopup.open(newCard.name, newCard.link);
-      }
-
-    }, '#card-template'
-    )
-
-    defaultCards.addItem(card.generateCard());
   }
 }, ".grid-container");
   

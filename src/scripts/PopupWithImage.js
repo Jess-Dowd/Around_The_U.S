@@ -13,6 +13,7 @@ class PopupWithImage extends Popup {
         
         text.textContent = caption;
         image.src = link;
+        image.alt = caption;
     }
  }
 

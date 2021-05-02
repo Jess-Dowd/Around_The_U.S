@@ -3,6 +3,7 @@ class Card {
     this._link = card.link;
     this._name = card.name;
     this._templateSelector = templateSelector;
+    this._handlePreviewImage = handlePreviewImage
 }
 
 _handleRemoveCard(e) { 

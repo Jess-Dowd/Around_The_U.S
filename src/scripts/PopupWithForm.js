@@ -6,6 +6,13 @@ class PopupWithForm extends Popup {
         this._handleFormSubmit = handleFormSubmit
     }
 
+    close() {
+        super.close();
+        document.querySelector('.popup-box__container_type_card').reset();
+        // this._popupElement.querySelector('.popup-box__save').classList.add('.popup-box__save_type_disabled')
+        
+    }
+
     open() {
         super.open();
     }
@@ -23,9 +30,9 @@ class PopupWithForm extends Popup {
         
         this._popupElement.addEventListener("submit", (e) => {
             this._handleFormSubmit(e, this._getInputValues());
-            this._popupElement.reset();
-            this.close();
+            // this._popupElement.reset();
             
+            this.close();
         })
 
         super.setEventListeners();

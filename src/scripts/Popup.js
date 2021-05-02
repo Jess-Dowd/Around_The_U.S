@@ -3,7 +3,7 @@ class Popup {
         this._popupElement = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
     }
-
+    
     ///open
     open() {
         const popupBox = this._popupElement.closest(".popup-box")
@@ -16,6 +16,7 @@ class Popup {
         const popupBox = this._popupElement.closest(".popup-box")
         popupBox.classList.remove("popup-box_open");
         document.removeEventListener("keydown", this._handleEscClose);
+        
     }
 
     //handleescclose
