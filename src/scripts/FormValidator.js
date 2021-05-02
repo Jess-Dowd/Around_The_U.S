@@ -35,23 +35,23 @@ class FormValidator {
   _toggleButtonState(inputs) {
     const isValid = inputs.every((input) => input.validity.valid)//
     const button = this.formElement.querySelector(this._submitButtonSelector);
-
+    
     if(isValid) {
       button.classList.remove(this._inactiveButtonClass)
     } else {
       button.classList.add(this._inactiveButtonClass)
     }
+
+    
   }
 
-  // _addEventListener() {
-   
-  // }
   
   enableValidation() {
       this.formElement.addEventListener('submit', ((e) => {
         e.preventDefault()
+        
       }))  
-
+      
       const inputs = Array.from(this.formElement.querySelectorAll(this._inputSelector));
 
       inputs.forEach((input) => {

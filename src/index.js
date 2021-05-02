@@ -40,11 +40,12 @@ const profilePopup = new PopupWithForm(".popup-box__container_type_profile", {
 profilePopup.setEventListeners();  ///set event listener for exit, submit, and click outside of popup exit
 
 document.querySelector('.profile__text-button').addEventListener('click', () => {
-  profilePopup.open()
+  profilePopup.open()    ///open the popup and add listener for esc key 
   const getValue = userInfo.getUserInfo();
   nameInput.value = getValue.name;   ///fill in the input fields with current data
   jobInput.value = getValue.job;
-    ///open the popup and add listener for esc key  
+    
+     
 })
 
 ///////////////////////
@@ -60,6 +61,7 @@ function handleOpenModalCard() {
   cardPopup.open()
   const saveButton = document.querySelector('.popup-box__save')
   saveButton.classList.add('.popup-box__save_disabled')
+  document.querySelector('.popup-box__container_type_card').reset();
 }
 
 const addCardButton = document.querySelector(".profile__photo-button");
@@ -128,7 +130,7 @@ const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
     e.preventDefault();
     const item = { name: vals.name, link: vals.link };
     createCard(item)
-
+    
   }
 }, ".grid-container");
   
