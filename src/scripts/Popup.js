@@ -2,19 +2,18 @@ class Popup {
     constructor(popupSelector) {
         this._popupElement = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._popupBox = this._popupElement.closest(".popup-box")
     }
     
     ///open
     open() {
-        const popupBox = this._popupElement.closest(".popup-box")
-        popupBox.classList.add("popup-box_open");
+        this._popupBox.classList.add("popup-box_open");
         document.addEventListener("keydown", this._handleEscClose);
     }
 
     ///close
     close() {
-        const popupBox = this._popupElement.closest(".popup-box")
-        popupBox.classList.remove("popup-box_open");
+        this._popupBox.classList.remove("popup-box_open");
         document.removeEventListener("keydown", this._handleEscClose);
         
     }

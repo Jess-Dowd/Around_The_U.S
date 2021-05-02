@@ -5,15 +5,15 @@ class PopupWithImage extends Popup {
         super(popupSelector);
     }
 
-    open(caption, link) {
+    open(name, link) {
         super.open();
         
         const text = this._popupElement.querySelector(".popup-box__caption")
         const image = this._popupElement.querySelector(".popup-box__image")
         
-        text.textContent = caption;
+        text.textContent = name;
         image.src = link;
-        image.alt = caption;
+        image.alt = name;
     }
  }
 

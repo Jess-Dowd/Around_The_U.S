@@ -9,7 +9,7 @@ class FormValidator {
   }
   
   _showError(input) { 
-    this._error = this.formElement.querySelector('#' + input.id + '-error');
+    this._error = this.formElement.querySelector(`#${input.id}-error`);
     this._error.textContent = input.validationMessage;
   
     this._error.classList.add(this._errorClass);
@@ -17,7 +17,7 @@ class FormValidator {
   }
 
   _hideError(input) {
-    this._error = this.formElement.querySelector('#' + input.id + '-error');
+    this._error = this.formElement.querySelector(`#${input.id}-error`);
     this._error.textContent = '';
   
     this._error.classList.remove(this._errorClass);

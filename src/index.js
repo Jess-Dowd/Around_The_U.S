@@ -112,8 +112,9 @@ function createCard(item) {
   
   const card = new Card({
 
-    card: item, handlePreviewImage: () => {  //inputvalues, handlepreview, cardtemplateselect
-      imagePopup.open(card.name, card.link)}
+    card: item, handleCardClick: ({ name, link }) => {
+      imagePopup.open(name, link);
+    },
     
     }, '#card-template')
  
@@ -132,7 +133,7 @@ const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
     createCard(item)
     
   }
-}, ".grid-container");
+}, "#grid-container");
   
 
 cardPopup.setEventListeners();

@@ -1,9 +1,10 @@
 class Card {
-  constructor({card, handlePreviewImage}, templateSelector) {
+  constructor({card, handleCardClick}, templateSelector) {
     this._link = card.link;
     this._name = card.name;
     this._templateSelector = templateSelector;
-    this._handlePreviewImage = handlePreviewImage
+    // this._handlePreviewImage = handlePreviewImage
+    this._handleCardClick = handleCardClick
 }
 
 _handleRemoveCard(e) { 
@@ -24,13 +25,29 @@ _setEventListeners() {
 
     likeButton.addEventListener("click", this._handleToggleLike);
     deleteButton.addEventListener("click", this._handleRemoveCard);
-    cardImage.addEventListener("click", this._handlePreviewImage); 
+    
+    cardImage.addEventListener("click", () => {
+      this._handleCardClick({
+        name: this._name,
+        link: this._link,
+      });
+    }); 
   }
 
-//////working on currently////// 
+  
+
+  _getCardTemplate() {
+    const cardTemplate = document
+      .querySelector(this._templateSelector)
+      .content.querySelector(".photo-grid")
+      .cloneNode(true);
+     
+    return cardTemplate;
+  }
+
 generateCard() {
-  const cardTemplate = document.querySelector("#card-template").content.querySelector(".photo-grid");
-  this._card  = cardTemplate.cloneNode(true);
+  
+  this._card = this._getCardTemplate()
 
   const cardImage = this._card.querySelector(".photo-grid__photo")
   const cardTitle = this._card.querySelector(".photo-grid__title");
