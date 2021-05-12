@@ -3,6 +3,10 @@ class Popup {
         this._popupElement = document.querySelector(popupSelector);
         this._handleEscClose = this._handleEscClose.bind(this);
         this._popupBox = this._popupElement.closest(".popup-box")
+        if (this._popupElement.querySelector(".popup-box__save")) {
+            this._submitBtn = this._popupElement.querySelector(".popup-box__save")
+            this._submitBtnText = this._submitBtn.textContent;
+        }
     }
     
     ///open
@@ -16,6 +20,14 @@ class Popup {
         this._popupBox.classList.remove("popup-box_open");
         document.removeEventListener("keydown", this._handleEscClose);
         
+    }
+
+    changeLoadingText(isLoading) {
+        if (isLoading) {
+            this._submitBtn.textContent = "Saving...";
+        } else {
+            this._submitBtn.textContent = this._submitBtnText;
+        }
     }
 
     //handleescclose

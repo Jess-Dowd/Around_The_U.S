@@ -14,6 +14,7 @@
     </header>
     <main class="main">
       <section class="profile">
+        <button type="button" class="profile__image-button"></button>
         <img class="profile__image" src='<%= require("./images/profile.jpg")%>' alt="profile picture">
         <div class="profile__text">
           <h1 class="profile__name">Jessalyn Dowd</h1>
@@ -28,6 +29,19 @@
     <footer class="footer">
       <p class="footer__text">© 2020 Around The U.S.</p>
     </footer>
+
+    <div class="popup-box popup-box_type_user-pic" >
+      <form class="popup-box__container popup-box__container_type_user-pic" id='popup-box__container_type_user-pic' name="edit-pic">
+        <button class="popup-box__exit popup-box__exit_type_profile" type="button"></button>
+        <h2 class="popup-box__title">Change User Picture</h2>
+        <div class="popup-box__input">
+          <input id="user-pic" type="url" name="field1" class="popup-box__text popup-box__text_type_user-pic" placeholder="link" required minlength="1">
+          <span id="user-pic-error" class="popup-box__error"></span>
+
+        </div>
+        <button type="submit" class="popup-box__save popup-box__save_user-pic">Save</button>
+      </form>
+    </div>
 
     <div class="popup-box popup-box_type_profile" >
       <form class="popup-box__container popup-box__container_type_profile" id='popup-box__container_type_profile' name="edit-profile">
@@ -61,6 +75,15 @@
       </form>
     </div>
 
+    <div class="popup-box popup-box_type_delete" >
+      <form class="popup-box__container popup-box__container_type_delete" id="popup-box__container_type_delete" name="delete">
+        <button class="popup-box__exit popup-box__exit_type_delete" type="button" ></button>
+        <h2 class="popup-box__title">Are you sure?</h2>
+        
+        <button type="submit" class="popup-box__save popup-box__save_card popup-box__save_disabled" id="popup-box__save">Yes</button>
+      </form>
+    </div>
+
     <div class="popup-box popup-box_type_photo" >
       <figure class="popup-box__container popup-box__container_type_photo">
         <img class="popup-box__image" src="#" alt="#">
@@ -77,6 +100,7 @@
       <div class="photo-grid__content">
         <h2 class="photo-grid__title"></h2>
         <button class="photo-grid__heart" type="button"></button>
+        <div><p class="photo-grid__like-count">0</p></div>
       </div>
     </article>
   </template>

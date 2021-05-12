@@ -4,6 +4,7 @@
 @import url(./__content/photo-grid__content.css);
 @import url(./__delete/photo-grid__delete.css);
 @import url(./__heart/_clicked/photo-grid__heart_clicked.css);
+@import url(./__like-count/photo-grid__like-count.css);
 
 
 .photo-grid {
