@@ -13,9 +13,8 @@ export default class Api {
                 } else {
                     return Promise.reject(`Error: ${res.status}`);
                 }
-            });
+            })
     }
-
 
     changeUserInfo({ name: newName, about: newAbout }) {
         return fetch(`${this.options.baseUrl}/users/me`, {
@@ -46,7 +45,7 @@ export default class Api {
                 }
             });
     }
-
+ 
     getInitialCards() {
         return fetch(`${this.options.baseUrl}/cards`, {
             headers: this.options.headers,
@@ -119,8 +118,8 @@ export default class Api {
 
     }
 
-    unlikeCard(cardId) {
-        return fetch(`${this.options.baseUrl}/cards/likes/${cardId}`, {
+    unlikeCard(cardData) {
+        return fetch(`${this.options.baseUrl}/cards/likes/${cardData._id}`, {
             method: "DELETE",
             headers: this.options.headers,
         })

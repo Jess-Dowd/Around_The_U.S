@@ -11,7 +11,8 @@ import Api from './scripts/Api.js';
 ///Initilize Api////
 ////////////////////
 const api = new Api({
-  baseUrl: "https://around.nomoreparties.co/v1/group-10",
+  baseUrl: "https://around.nomoreparties.co/group-10",
+  // baseUrl: "https://around.nomoreparties.co/v1/group-10",
   headers: {
       authorization: "0ca829a7-d9ab-43f0-95f1-42176c6a1754",
       "Content-Type": "application/json"
@@ -39,53 +40,81 @@ addFormValidator.enableValidation();
 //delete card model///
 /////////////////////
 
-const formDelete = new PopupWithForm('popup-box_type_delete', { handleFormSubmit: () => {
-  api.deleteCard(formDelete.currentCardId)
-      .catch((err) => console.log(err))
-      .finally(() => {
-          api.getInitialCards()
-          .then((res) => {
-              defaultCards._items = res;
-              defaultCards.renderItems();
-          })
-          .catch((err) => {console.log(err)});
-      });
-}});
-formDelete.setEventListeners();
+// const formDelete = new PopupWithForm('.popup-box__container_type_delete', { handleFormSubmit: (e) => {
+//   api.deleteCard(e.target.parentElement.classList.contains('photo-grid'))
+//       .catch((err) => console.log(err))
+//       .finally(() => {
+//           api.getInitialCards()
+//           .then((res) => {
+//               cardList._items = res;
+//               cardList.renderItems();
+//           })
+//           .catch((err) => {console.log(err)});
+//       });
+// }});
+// formDelete.setEventListeners();
 
-document.querySelector('.photo-grid__delete').addEventListener('click', () => {
-  formDelete.open()    
+/////get user info/////////////
+const userInfo = new UserInfo('.profile__name', '.profile__bio', '.profile__image' );
+
+// api.getUserInfo()
+// .then((res) => {
+//   console.log(res, "1");
+//     userInfo.setUserInfo (res.name, res.about); ///get and set user info
+//     userInfo.setUserPic( res.avatar ); 
+//     userInfo.setUserId(res._id) ///set uset pic
+    
+//     console.log(userInfo.myId, "2");
+    
+//     // console.log(res._id)
+//     // return res._id;       
+// })
+// .catch((err) => {console.log(err)});
+
+
+////////change profile pic popup//
+document.querySelector('.profile__image-button').addEventListener('click', () => {
+  profilePic.open()    
 })
+
+const profilePicInput = document.querySelector(".popup-box__text_type_user-pic")
+const profilePic = new PopupWithForm(".popup-box__container_type_user-pic", {handleFormSubmit: () => {
+  // e.preventDefault()
+  profilePic.changeLoadingText(true);
+  api.changeUserPic({avatar: profilePicInput.value})
+      .then((res) => {
+        console.log(res, '99')
+        userInfo.setUserPic(res.avatar);
+        })
+      .catch((err) => console.log(err))
+      
+  profilePic.changeLoadingText(false);
+}})
+
+profilePic.setEventListeners();
 
 //////////////////
 //profile model///
 /////////////////
 const nameInput = document.querySelector(".popup-box__text_type_name")
 const jobInput = document.querySelector(".popup-box__text_about")
-
-const userInfo = new UserInfo('.profile__name', '.profile__bio', '.profile__image' );
-api.getUserInfo()
-    .then((res) => {
-        userInfo.setUserInfo({ name: res.name, about: res.about }); ///get and set user info
-        userInfo.setUserPic({ url: res.avatar });  ///set uset pic
-    })
-    .catch((err) => {console.log(err)});
-
+const getValue = userInfo.getUserInfo();
+    
 document.querySelector('.profile__text-button').addEventListener('click', () => {
   profilePopup.open()    ///open the popup and add listener for esc key 
-  const getValue = userInfo.getUserInfo();
+  
   nameInput.value = getValue.name;   ///fill in the input fields with current data
   jobInput.value = getValue.job;     
 })
 
-const profilePopup = new PopupWithForm("popup-box_type_profile", {  ///create popup that changes profile info
+const profilePopup = new PopupWithForm(".popup-box__container_type_profile", {  ///create popup that changes profile info
   handleFormSubmit: () => { ////set what happens when form is submitted
   // e.preventDefault();
   profilePopup.changeLoadingText(true);  ///change save button while loading.
-  api.changeUserInfo({ name: vals.name, about: vals.about }) ///set new user info.
+  api.changeUserInfo({ name: nameInput.value, about: jobInput.value }) ///set new user info.
       .then((res) => {
-          userInfo.setUserInfo(nameInput, jobInput);
-          userInfo.setUserPic({ url: res.avatar });
+          console.log(res, '8')
+          userInfo.setUserInfo(res.name, res.about);
           // profilePopup.close();
         })
       .catch((err) => {console.log(err)})
@@ -93,7 +122,6 @@ const profilePopup = new PopupWithForm("popup-box_type_profile", {  ///create po
           profilePopup.changeLoadingText(false);  
           // profilePopup._popup.reset();
       });
-
 }});
 
 profilePopup.setEventListeners();  ///set event listener for exit, submit, and click outside of popup exit
@@ -101,53 +129,10 @@ profilePopup.setEventListeners();  ///set event listener for exit, submit, and c
 ///////////////////////
 //image modal///////
 //////////////////////
-const imagePopup = new PopupWithImage("popup-box_type_photo");
+const imagePopup = new PopupWithImage(".popup-box__container_type_photo");
 imagePopup.setEventListeners();
 
-///////////////////////
-//render initial cards//
-/////////////////////
-
-const defaultCards = new Section (
-  {items: [], 
-    renderer: (item) => {
-      createCard(item) 
-    }
-}, ".grid-container");
-
-
-api.getInitialCards()
-    .then((res) => {
-        defaultCards._items = res;
-        defaultCards.renderItems();
-    })
-    .catch((err) => {console.log(err)});
-
-
-function createCard(item) {
-  const card = new Card({
-    card: item, handleCardClick: (e, { name, link }) => {
-      if (e.target.classList.contains("card__image")) {
-        imagePopup.open({ name, link });
-      } else if (e.target.classList.contains("photo-grid__heart")) {
-        api.likeCard(item, myUserId)
-          .then((res) => {
-            if (res.likes.some((like) => { return (like._id === myUserId); })) {
-              e.target.classList.add("photo-grid__heart_clicked");
-            } else {
-              e.target.classList.remove("photo-grid__heart_clicked");
-            }
-            e.target.parentElement.querySelector(".card__like-count").textContent = res.likes.length;
-          });
-      }
-    },
-  },  "#card-template", myUserId)
-  defaultCards.addItem(card.generateCard());
-}
-
-///////////////////////
-//render new cards////
-//////////////////////
+///////create card modal///////
 function handleOpenModalCard() {
   cardPopup.open()
   const saveButton = document.querySelector('.popup-box__save')
@@ -155,15 +140,18 @@ function handleOpenModalCard() {
   document.querySelector('.popup-box__container_type_card').reset();
 }
 
+const titleInput = document.querySelector(".popup-box__text_type_card")
+const linkInput = document.querySelector(".popup-box__text_type_photo")
 const addCardButton = document.querySelector(".profile__photo-button");
 addCardButton.addEventListener("click", () => handleOpenModalCard() );
 
-const cardPopup = new PopupWithForm("popup-box_type_card", { handleFormSubmit: (e, vals) => {
-  e.preventDefault();
+const cardPopup = new PopupWithForm(".popup-box__container_type_card", { handleFormSubmit: () => {
+  // e.preventDefault();
   cardPopup.changeLoadingText(true);
-  api.addNewCard({ name: vals.name, link: vals.link})
+  api.addNewCard({ name: titleInput.value, link: linkInput.value})
       .then((res) => {
-        createCard(res)
+        console.log(res, '8');
+        cardList.items.push(createCard(res))
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -172,29 +160,71 @@ const cardPopup = new PopupWithForm("popup-box_type_card", { handleFormSubmit: (
   }});
 
 cardPopup.setEventListeners();
+///////////////////////
+//render initial cards//
+/////////////////////
 
+const cardList = new Section (
+  {items: []} , ".grid-container");
 
-////////change profile pic popup//
-
-const profilePic = new PopupWithForm("popup-box_type_photo", {handleFormSubmit: (e) => {
-  e.preventDefault();
-  profilePic.changeLoadingText(true);
-  api. changeUserPic({ avatar: newUrl })
-      .then((res) => {
-        createCard(res)
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-          cardPopup.changeLoadingText(false);
-      });
-}})
-
-document.querySelector('.profile__image-button').addEventListener('click', () => {
-  profilePic.open()    
-})
-
-profilePic.setEventListeners();
+// myArray.find(x => x.id === '45').foo;
 
 
 
+api.getInitialCards()
+    .then((res) => {
+      console.log(res, "3")
+        
+        console.log(cardList, "3.5")
+        for (let index = 0; index < res.length; index++) {
+          
+          cardList.items.unshift(createCard(res[index])) 
+          
+          
+        }
+        // console.log(cardList, "3.6")
+        // for (let index = 0; index < cardList.items.length; index++) {
+        //   cardList.items.forEach(createCard(cardList.items[index]))
+        // }
+        
+    })
+    .catch((err) => {console.log(err)});
 
+
+function createCard(cardItem) {
+  const card = new Card(
+    
+      cardItem, {handleCardClick: (e) => {
+        if (e.target.classList.contains("card__image")) {
+          const name = e.target.querySelector(".photo-grid__title")
+          const link = e.target.querySelector(".photo-grid__photo")
+          imagePopup.open(name, link);
+        } else if (e.target.classList.contains("photo-grid__heart_clicked")) {
+          api.unlikeCard(cardItem)
+          .then((res) => {
+            console.log(res, "4");
+            e.target.classList.remove("photo-grid__heart_clicked");
+            
+            e.target.parentElement.querySelector(".card__like-count").textContent = res.likes.length;
+          })
+          .catch((err) => {console.log(err)});
+        } else if (e.target.classList.contains("photo-grid__delete")) {
+          formDelete.open()  
+        }  else if (e.target.classList.contains("photo-grid__heart") ) {
+          api.likeCard(cardItem, userInfo._id)
+            .then((res) => {
+              console.log(res, "5");
+              e.target.classList.add("photo-grid__heart_clicked");
+              
+              e.target.parentElement.querySelector(".card__like-count").textContent = res.likes.length;
+            })
+            .catch((err) => {console.log(err)});
+        }
+      },
+    }, "#card-template", userInfo.myId)
+  cardList.addItem(card.generateCard());
+}
+
+///////////////////////
+//render new cards////
+//////////////////////

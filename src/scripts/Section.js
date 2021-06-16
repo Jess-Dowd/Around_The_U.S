@@ -1,15 +1,16 @@
 // import { container } from "webpack";
 
 class Section {
-    constructor(items, { renderer }, containerSelector) {
+    constructor({items}, containerSelector) {
         this._container = document.querySelector(containerSelector);
-        this._renderer = renderer;
         this.items = items;
       }
         renderItems() {
-            this.items.forEach((item) => {
-                this._renderer(item);
-            });
+            
+            // for (let index = 0; index < this.items.length; index++) {
+            //     this.items.forEach(this._renderer)
+            //   }
+            
         };
 
     addItem(element) {
