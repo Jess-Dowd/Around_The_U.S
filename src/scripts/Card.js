@@ -66,8 +66,6 @@ class Card {
     cardTitle.textContent = this._card.name;
     likeCount.textContent = this._card.likes.length;
     this._template.id = this._card._id
-    // console.log(this._card.likes, 'this card likes')
-    // this._card.likes.forEach()
 
 
 
