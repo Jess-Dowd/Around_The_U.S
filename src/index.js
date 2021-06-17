@@ -94,7 +94,7 @@ const profilePicInput = document.querySelector(".popup-box__text_type_user-pic")
 const profilePic = new PopupWithForm(".popup-box__container_type_user-pic", {
   handleFormSubmit: () => {
     // e.preventDefault()
-    profilePic.changeLoadingText(true);
+    // changeLoadingText(true);
     api.changeUserPic({ avatar: profilePicInput.value })
       .then((res) => {
         console.log(res, '99')
@@ -102,7 +102,8 @@ const profilePic = new PopupWithForm(".popup-box__container_type_user-pic", {
       })
       .catch((err) => console.log(err))
 
-    profilePic.changeLoadingText(false);
+    // changeLoadingText(false);
+    // profilePic.close()
   }
 })
 
@@ -125,7 +126,7 @@ document.querySelector('.profile__text-button').addEventListener('click', () => 
 const profilePopup = new PopupWithForm(".popup-box__container_type_profile", {  ///create popup that changes profile info
   handleFormSubmit: () => { ////set what happens when form is submitted
     // e.preventDefault();
-    profilePopup.changeLoadingText(true);  ///change save button while loading.
+    // profilePopup.changeLoadingText(true);  ///change save button while loading.
     api.changeUserInfo({ name: nameInput.value, about: jobInput.value }) ///set new user info.
       .then((res) => {
         console.log(res, '8')
@@ -133,10 +134,10 @@ const profilePopup = new PopupWithForm(".popup-box__container_type_profile", {  
         // profilePopup.close();
       })
       .catch((err) => { console.log(err) })
-      .finally(() => {
-        profilePopup.changeLoadingText(false);
+      // .finally(() => {
+      //   profilePopup.changeLoadingText(false);
         // profilePopup._popup.reset();
-      });
+      // });
   }
 });
 
@@ -164,16 +165,16 @@ addCardButton.addEventListener("click", () => handleOpenModalCard());
 const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
   handleFormSubmit: () => {
     // e.preventDefault();
-    cardPopup.changeLoadingText(true);
+    // cardPopup.changeLoadingText(true);
     api.addNewCard({ name: titleInput.value, link: linkInput.value })
       .then((res) => {
         console.log(res, '8');
         cardList.items.push(createCard(res))
       })
       .catch((err) => console.log(err))
-      .finally(() => {
-        cardPopup.changeLoadingText(false);
-      });
+      // .finally(() => {
+      //   cardPopup.changeLoadingText(false);
+      // });
   }
 });
 

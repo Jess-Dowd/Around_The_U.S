@@ -22,13 +22,11 @@ class Popup {
         
     }
 
-    changeLoadingText(isLoading) {
-        if (isLoading) {
-            this._submitBtn.textContent = "Saving...";
-        } else {
-            this._submitBtn.textContent = this._submitBtnText;
-        }
-    }
+    // changeLoadingText(isLoading) {
+    //     if (isLoading) {
+    //         this._submitBtn.textContent = "Saving...";
+    //     } 
+    // }
 
     //handleescclose
     _handleEscClose(e) {
