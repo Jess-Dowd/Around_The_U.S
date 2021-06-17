@@ -8,7 +8,7 @@ class PopupWithForm extends Popup {
 
     close() {
         super.close();
-        // document.querySelector('.popup-box__container').reset();
+        document.querySelector('.popup-box__container').reset();
         document.getElementById('popup-box__save').classList.add('popup-box__save_disabled')
         
     }

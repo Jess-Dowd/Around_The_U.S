@@ -36,23 +36,7 @@ const addFormValidator = new FormValidator(defaultConfig, document.querySelector
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-//////////////////////
-//delete card model///
-/////////////////////
 
-// const formDelete = new PopupWithForm('.popup-box__container_type_delete', { handleFormSubmit: (e) => {
-//   api.deleteCard(e.target.parentElement.classList.contains('photo-grid'))
-//       .catch((err) => console.log(err))
-//       .finally(() => {
-//           api.getInitialCards()
-//           .then((res) => {
-//               cardList._items = res;
-//               cardList.renderItems();
-//           })
-//           .catch((err) => {console.log(err)});
-//       });
-// }});
-// formDelete.setEventListeners();
 
 /////get user info/////////////
 const userInfo = new UserInfo('.profile__name', '.profile__bio', '.profile__image' );
@@ -193,38 +177,80 @@ api.getInitialCards()
 
 function createCard(cardItem) {
   const card = new Card(
+    cardItem,
+    {
+      handleCardClick: (e) => {
+        
+          if (e.target.classList.contains("photo-grid__delete")) {
+            const formDelete = new PopupWithForm('.popup-box__container_type_delete', { handleFormSubmit: () => {
+              api.deleteCard(e.target.parentElement.id)
+                  .catch((err) => console.log(err))
+                  .finally(() => {
+                      e.target.parentElement.remove();
+                      // api.getInitialCards()
+                      // .then((res) => {
+                      //   for (let index = 0; index < res.length; index++) {
+                      
+                      //     cardList.items.unshift(createCard(res[index])) 
+                      // }})
+                      // .catch((err) => {console.log(err)});
+                  });
+            }});
+            formDelete.setEventListeners();
+            formDelete.open()
+
+          }
+        }},
+        //   if (e.target.classList.contains("card__image")) {
+        //     const name = e.target.querySelector(".photo-grid__title")
+        //     const link = e.target.querySelector(".photo-grid__photo")
+        //     imagePopup.open(name, link);
+        //   } else if (e.target.classList.contains("photo-grid__heart_clicked")) {
+        //     api.unlikeCard(cardItem)
+        //     .then((res) => {
+        //       console.log(res, "4");
+        //       e.target.classList.remove("photo-grid__heart_clicked");
+
+        //       e.target.parentElement.querySelector(".card__like-count").textContent = res.likes.length;
+        //     })
+        //     .catch((err) => {console.log(err)});
+        //   } else if (e.target.classList.contains("photo-grid__delete")) {
+        //     formDelete.open()  
+        //   }  else if (e.target.classList.contains("photo-grid__heart") ) {
+        //     api.likeCard(cardItem, userInfo._id)
+        //       .then((res) => {
+        //         console.log(res, "5");
+        //         e.target.classList.add("photo-grid__heart_clicked");
+
+        //         e.target.parentElement.querySelector(".card__like-count").textContent = res.likes.length;
+        //       })
+        //       .catch((err) => {console.log(err)});
+        //   }
+
+      
     
-      cardItem, {handleCardClick: (e) => {
-        if (e.target.classList.contains("card__image")) {
-          const name = e.target.querySelector(".photo-grid__title")
-          const link = e.target.querySelector(".photo-grid__photo")
-          imagePopup.open(name, link);
-        } else if (e.target.classList.contains("photo-grid__heart_clicked")) {
-          api.unlikeCard(cardItem)
-          .then((res) => {
-            console.log(res, "4");
-            e.target.classList.remove("photo-grid__heart_clicked");
-            
-            e.target.parentElement.querySelector(".card__like-count").textContent = res.likes.length;
-          })
-          .catch((err) => {console.log(err)});
-        } else if (e.target.classList.contains("photo-grid__delete")) {
-          formDelete.open()  
-        }  else if (e.target.classList.contains("photo-grid__heart") ) {
-          api.likeCard(cardItem, userInfo._id)
-            .then((res) => {
-              console.log(res, "5");
-              e.target.classList.add("photo-grid__heart_clicked");
-              
-              e.target.parentElement.querySelector(".card__like-count").textContent = res.likes.length;
-            })
-            .catch((err) => {console.log(err)});
-        }
-      },
-    }, "#card-template", userInfo.myId)
+    "#card-template", 'dfe326a7bc47ff5776017a43')
   cardList.addItem(card.generateCard());
 }
 
 ///////////////////////
 //render new cards////
 //////////////////////
+//////////////////////
+//delete card model///
+/////////////////////
+
+// const formDelete = new PopupWithForm('.popup-box__container_type_delete', { handleFormSubmit: (e) => {
+//   api.deleteCard(e.target.parentElement.classList.contains('photo-grid'))
+//       .catch((err) => console.log(err))
+//       .finally(() => {
+//           api.getInitialCards()
+//           .then((res) => {
+//             for (let index = 0; index < res.length; index++) {
+          
+//               cardList.items.unshift(createCard(res[index])) 
+//           })
+//           .catch((err) => {console.log(err)});
+//       });
+// }});
+// formDelete.setEventListeners();
