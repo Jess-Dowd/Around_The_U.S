@@ -17,7 +17,7 @@ class Card {
   // }
 
   // _setEventListeners() {
-  //   // const likeButton = this._card.querySelector(".photo-grid__heart");
+  
   //   // const cardDeleteButton = this._card.closest(".photo-grid__delete");
   //   // const cardImage = this._card.querySelector(".photo-grid__photo")
 
@@ -53,7 +53,7 @@ class Card {
 
     const cardImage = this._template.querySelector(".photo-grid__photo")
     const deleteButton = this._template.querySelector(".photo-grid__delete");
-
+    const likeButton = this._template.querySelector(".photo-grid__heart");
     // const cardImage = this._card.querySelector(".photo-grid__photo")
     const cardTitle = this._template.querySelector(".photo-grid__title");
     const likeCount = this._template.querySelector(".photo-grid__like-count");
@@ -66,6 +66,22 @@ class Card {
     cardTitle.textContent = this._card.name;
     likeCount.textContent = this._card.likes.length;
     this._template.id = this._card._id
+    // console.log(this._card.likes, 'this card likes')
+    // this._card.likes.forEach()
+
+
+
+   this._card.likes.filter(function (like) {
+     if (like._id === 'dfe326a7bc47ff5776017a43') {likeButton.classList.add("photo-grid__heart_clicked")}
+    }) 
+      // likeButton.classList.add("photo-grid__heart_clicked")
+    
+
+   
+
+  //   var cardLike = this._card.likes.filter(function(like) {
+  //     return like.id === selectedGroup.owner;
+  // });
 
     // this._setEventListeners();
 

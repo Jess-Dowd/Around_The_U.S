@@ -1,6 +1,6 @@
 
 .photo-grid__heart {
-  margin: auto 23px auto auto;
+  margin: 16px 23px auto auto;
   opacity: 1;
   transition-property: opacity;
   transition-duration: 1s;

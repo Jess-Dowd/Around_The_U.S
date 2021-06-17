@@ -88,13 +88,13 @@ export default class Api {
             });
     }
 
-    likeCard(cardData, userId) {
-
-        if (cardData.likes.some((like) => { return (like._id === userId); })) {
+    unlikeCard(cardData, userId) {
+        // if (cardData.likes.some((like) => { return (like._id === userId); })) {
             return fetch(`${this.options.baseUrl}/cards/likes/${cardData._id}`, {
                 method: "DELETE",
                 headers: this.options.headers,
             })
+                
                 .then(res => {
                     if (res.ok) {
                         return res.json();
@@ -102,25 +102,25 @@ export default class Api {
                         return Promise.reject(`Error: ${res.status}`);
                     }
                 });
-        } else {
-            return fetch(`${this.options.baseUrl}/cards/likes/${cardData._id}`, {
-                method: "PUT",
-                headers: this.options.headers,
-            })
-                .then(res => {
-                    if (res.ok) {
-                        return res.json();
-                    } else {
-                        return Promise.reject(`Error: ${res.status}`);
-                    }
-                });
-        }
+        // } else {
+        //     return fetch(`${this.options.baseUrl}/cards/likes/${cardData._id}`, {
+        //         method: "PUT",
+        //         headers: this.options.headers,
+        //     })
+        //         .then(res => {
+        //             if (res.ok) {
+        //                 return res.json();
+        //             } else {
+        //                 return Promise.reject(`Error: ${res.status}`);
+        //             }
+        //         });
+        // }
 
     }
 
-    unlikeCard(cardData) {
+    likeCard(cardData) {
         return fetch(`${this.options.baseUrl}/cards/likes/${cardData._id}`, {
-            method: "DELETE",
+            method: "PUT",
             headers: this.options.headers,
         })
             .then(res => {
@@ -133,5 +133,3 @@ export default class Api {
     }
 
 }
-  
-  
