@@ -1,9 +1,8 @@
 class Card {
-  constructor(card, { handleCardClick }, templateSelector, user) {
+  constructor(card, { handleCardClick }, templateSelector) {
     this._card = card
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick
-    this._user = user;
   }
 
   _getCardTemplate() {
@@ -24,7 +23,7 @@ class Card {
     const likeButton = this._template.querySelector(".photo-grid__heart");
     const cardTitle = this._template.querySelector(".photo-grid__title");
     const likeCount = this._template.querySelector(".photo-grid__like-count");
-    if (this._card.owner._id !== this._user) {
+    if (this._card.owner._id !== 'dfe326a7bc47ff5776017a43') {
       deleteButton.style.display = 'none';
     }
 

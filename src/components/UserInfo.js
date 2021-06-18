@@ -1,9 +1,9 @@
 class UserInfo {
-    constructor(name, job, pic, id) {
+    constructor(name, job, pic) {
         this.name = document.querySelector(name),
             this.job = document.querySelector(job)
         this.pic = document.querySelector(pic)
-        this.id = id
+       
     }
 
     getUserInfo() {
@@ -22,9 +22,6 @@ class UserInfo {
         this.pic.src = url;
     }
 
-    setUserId(url) {
-        this.pic.src = url;
-    }
 }
 
 export default UserInfo;

@@ -48,7 +48,7 @@ api.getUserInfo()
   .then((res) => {
     userInfo.setUserInfo(res.name, res.about);
     userInfo.setUserPic(res.avatar);
-
+    
   })
   .catch((err) => { console.log(err) });
 
@@ -145,6 +145,37 @@ const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
 
 cardPopup.setEventListeners();
 
+function handleLikeCard(e, cardItem) {
+  api.likeCard(cardItem)
+  .then((res) => {
+    e.target.classList.add("photo-grid__heart_clicked");
+    e.target.parentElement.querySelector(".photo-grid__like-count").textContent = res.likes.length;
+  })
+  .catch((err) => { console.log(err) });
+};
+
+function handleUnlikeCard(e, cardItem) {
+  api.unlikeCard(cardItem)
+  .then((res) => {
+    e.target.classList.remove("photo-grid__heart_clicked");
+    e.target.parentElement.querySelector(".photo-grid__like-count").textContent = res.likes.length;
+  })
+  .catch((err) => { console.log(err) });
+};
+
+function handleDeleteCard(e) {
+  const formDelete = new PopupWithForm('.popup-box__container_type_delete', {
+    handleFormSubmit: () => {
+      api.deleteCard(e.target.parentElement.id)
+        .catch((err) => console.log(err))
+        .finally(() => {
+          e.target.parentElement.remove();
+        });
+    }
+  });
+  formDelete.setEventListeners();
+  formDelete.open()
+}
 
 /////////////////
 //create card////
@@ -153,45 +184,19 @@ function createCard(cardItem) {
   const card = new Card(
     cardItem,
     {
-      handleCardClick: (e) => {
+      handleCardClick: (e, carditem) => {
 
         if (e.target.classList.contains("photo-grid__delete")) {
-          const formDelete = new PopupWithForm('.popup-box__container_type_delete', {
-            handleFormSubmit: () => {
-              api.deleteCard(e.target.parentElement.id)
-                .catch((err) => console.log(err))
-                .finally(() => {
-                  e.target.parentElement.remove();
-
-                });
-            }
-          });
-          formDelete.setEventListeners();
-          formDelete.open()
-
+            handleDeleteCard(e)
         } else if (e.target.classList.contains("photo-grid__heart_clicked")) {
-          api.unlikeCard(cardItem)
-            .then((res) => {
-
-              e.target.classList.remove("photo-grid__heart_clicked");
-              e.target.parentElement.querySelector(".photo-grid__like-count").textContent = res.likes.length;
-
-            })
-            .catch((err) => { console.log(err) });
+            handleUnlikeCard(e, cardItem)
         } else if (e.target.classList.contains("photo-grid__heart")) {
-          api.likeCard(cardItem, 'dfe326a7bc47ff5776017a43')
-            .then((res) => {
-
-              e.target.classList.add("photo-grid__heart_clicked");
-              e.target.parentElement.querySelector(".photo-grid__like-count").textContent = res.likes.length;
-
-            })
-            .catch((err) => { console.log(err) });
+            handleLikeCard(e, cardItem)
         } else if (e.target.classList.contains("photo-grid__photo")) {
           imagePopup.open(e.target.parentElement.querySelector(".photo-grid__title").textContent, e.target.src);
         }
       }
     },
-    "#card-template", 'dfe326a7bc47ff5776017a43')
+    "#card-template")
   cardList.addItem(card.generateCard());
 }
