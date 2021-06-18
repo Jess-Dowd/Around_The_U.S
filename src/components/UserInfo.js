@@ -1,28 +1,28 @@
 class UserInfo {
     constructor(name, job, pic, id) {
         this.name = document.querySelector(name),
-        this.job = document.querySelector(job)
+            this.job = document.querySelector(job)
         this.pic = document.querySelector(pic)
         this.id = id
     }
 
-    getUserInfo() {  ////get current user info from page
+    getUserInfo() {
         return {
             name: this.name.textContent,
             job: this.job.textContent
-        };   
+        };
     };
 
-    setUserInfo(nameInput, jobInput) {  
+    setUserInfo(nameInput, jobInput) {
         this.name.textContent = nameInput;
         this.job.textContent = jobInput
     }
 
-    setUserPic( url ) {
+    setUserPic(url) {
         this.pic.src = url;
     }
 
-    setUserId( url ) {
+    setUserId(url) {
         this.pic.src = url;
     }
 }

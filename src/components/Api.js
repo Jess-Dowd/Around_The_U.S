@@ -45,7 +45,7 @@ export default class Api {
                 }
             });
     }
- 
+
     getInitialCards() {
         return fetch(`${this.options.baseUrl}/cards`, {
             headers: this.options.headers,
@@ -89,33 +89,18 @@ export default class Api {
     }
 
     unlikeCard(cardData, userId) {
-        // if (cardData.likes.some((like) => { return (like._id === userId); })) {
-            return fetch(`${this.options.baseUrl}/cards/likes/${cardData._id}`, {
-                method: "DELETE",
-                headers: this.options.headers,
-            })
-                
-                .then(res => {
-                    if (res.ok) {
-                        return res.json();
-                    } else {
-                        return Promise.reject(`Error: ${res.status}`);
-                    }
-                });
-        // } else {
-        //     return fetch(`${this.options.baseUrl}/cards/likes/${cardData._id}`, {
-        //         method: "PUT",
-        //         headers: this.options.headers,
-        //     })
-        //         .then(res => {
-        //             if (res.ok) {
-        //                 return res.json();
-        //             } else {
-        //                 return Promise.reject(`Error: ${res.status}`);
-        //             }
-        //         });
-        // }
+        return fetch(`${this.options.baseUrl}/cards/likes/${cardData._id}`, {
+            method: "DELETE",
+            headers: this.options.headers,
+        })
 
+            .then(res => {
+                if (res.ok) {
+                    return res.json();
+                } else {
+                    return Promise.reject(`Error: ${res.status}`);
+                }
+            });
     }
 
     likeCard(cardData) {

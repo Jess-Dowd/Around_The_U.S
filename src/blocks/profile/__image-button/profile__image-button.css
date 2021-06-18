@@ -5,7 +5,7 @@
     height: 120px;
     border: none;
     background-color: rgba(0, 0, 0, .8);
-    background-image: url('../../../../images/pen.svg');
+    background-image: url(../../../images/pen.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 26px 26px;

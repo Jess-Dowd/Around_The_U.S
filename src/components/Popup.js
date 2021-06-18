@@ -8,38 +8,28 @@ class Popup {
             this._submitBtnText = this._submitBtn.textContent;
         }
     }
-    
-    ///open
+
     open() {
         this._popupBox.classList.add("popup-box_open");
         document.addEventListener("keydown", this._handleEscClose);
     }
 
-    ///close
     close() {
         this._popupBox.classList.remove("popup-box_open");
         document.removeEventListener("keydown", this._handleEscClose);
-        
     }
 
-    // changeLoadingText(isLoading) {
-    //     if (isLoading) {
-    //         this._submitBtn.textContent = "Saving...";
-    //     } 
-    // }
-
-    //handleescclose
     _handleEscClose(e) {
         if (e.key === "Escape") {
             this.close();
         }
     }
 
-    ///seteventlisteners
+
     setEventListeners() {
         this._popupBox.addEventListener('click', (e) => {
-            if (e.target.classList.contains('popup-box') ){
-              this.close();
+            if (e.target.classList.contains('popup-box')) {
+                this.close();
             }
         })
         const closeButton = this._popupElement.querySelector('.popup-box__exit')

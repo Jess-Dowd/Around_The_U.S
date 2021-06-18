@@ -10,7 +10,7 @@
   transition-duration: 1s;
   transition-timing-function: ease;
   transition-delay: 0s;
-  background-image: url(../../../../images/pen.svg);
+  background-image: url(../../../images/pen.svg);
   background-repeat: no-repeat;
   background-position: center;
 }

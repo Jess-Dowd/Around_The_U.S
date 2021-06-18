@@ -1,18 +1,17 @@
-import './styles/index.css';
-import FormValidator from './scripts/FormValidator.js';
-import Card from './scripts/Card.js';
-import UserInfo from './scripts/UserInfo.js';
-import PopupWithForm from './scripts/PopupWithForm.js';
-import PopupWithImage from './scripts/PopupWithImage.js';
-import Section from './scripts/Section.js';
-import Api from './scripts/Api.js';
+import '../pages/index.css';
+import FormValidator from '../components/FormValidator.js';
+import Card from '../components/Card.js';
+import UserInfo from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import Section from '../components/Section.js';
+import Api from '../components/Api.js';
 
 /////////////////////
 ///Initilize Api////
 ////////////////////
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/group-10",
-  // baseUrl: "https://around.nomoreparties.co/v1/group-10",
   headers: {
     authorization: "0ca829a7-d9ab-43f0-95f1-42176c6a1754",
     "Content-Type": "application/json"
@@ -36,28 +35,28 @@ const addFormValidator = new FormValidator(defaultConfig, document.querySelector
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
-////////////render page from server/////////////////////
+//////////////////////////////
+///render page from server////
+//////////////////////////////
 
-/////get user info/////////////
+////////////////////
+//render user info//
+///////////////////
 const userInfo = new UserInfo('.profile__name', '.profile__bio', '.profile__image');
 
 api.getUserInfo()
-.then((res) => {
-    userInfo.setUserInfo (res.name, res.about); ///get and set user info
-    userInfo.setUserPic( res.avatar ); 
-       
-})
-.catch((err) => {console.log(err)});
+  .then((res) => {
+    userInfo.setUserInfo(res.name, res.about);
+    userInfo.setUserPic(res.avatar);
 
-///////////////////////
+  })
+  .catch((err) => { console.log(err) });
+
+////////////////////////
 //render initial cards//
-/////////////////////
-
+///////////////////////
 const cardList = new Section(
   { items: [] }, ".grid-container");
-
-// myArray.find(x => x.id === '45').foo;
-
 
 
 api.getInitialCards()
@@ -65,14 +64,13 @@ api.getInitialCards()
     for (let index = 0; index < res.length; index++) {
 
       cardList.items.unshift(createCard(res[index]))
-
-
     }
-   
   })
   .catch((err) => { console.log(err) });
 
-////////change profile pic popup//
+////////////////////////////
+//change profile pic popup//
+////////////////////////////
 document.querySelector('.profile__image-button').addEventListener('click', () => {
   profilePic.open()
 })
@@ -80,19 +78,13 @@ document.querySelector('.profile__image-button').addEventListener('click', () =>
 const profilePicInput = document.querySelector(".popup-box__text_type_user-pic")
 const profilePic = new PopupWithForm(".popup-box__container_type_user-pic", {
   handleFormSubmit: () => {
-    // e.preventDefault()
-    // changeLoadingText(true);
     api.changeUserPic({ avatar: profilePicInput.value })
       .then((res) => {
         userInfo.setUserPic(res.avatar);
       })
       .catch((err) => console.log(err))
-
-    // changeLoadingText(false);
-    // profilePic.close()
   }
 })
-
 profilePic.setEventListeners();
 
 //////////////////
@@ -111,30 +103,24 @@ document.querySelector('.profile__text-button').addEventListener('click', () => 
 
 const profilePopup = new PopupWithForm(".popup-box__container_type_profile", {  ///create popup that changes profile info
   handleFormSubmit: () => { ////set what happens when form is submitted
-    // e.preventDefault();
-    // profilePopup.changeLoadingText(true);  ///change save button while loading.
     api.changeUserInfo({ name: nameInput.value, about: jobInput.value }) ///set new user info.
       .then((res) => {
         userInfo.setUserInfo(res.name, res.about);
-        // profilePopup.close();
       })
       .catch((err) => { console.log(err) })
-      // .finally(() => {
-      //   profilePopup.changeLoadingText(false);
-        // profilePopup._popup.reset();
-      // });
   }
 });
-
 profilePopup.setEventListeners();  ///set event listener for exit, submit, and click outside of popup exit
 
-///////////////////////
-//image modal///////
-//////////////////////
+/////////////////
+//image modal////
+/////////////////
 const imagePopup = new PopupWithImage(".popup-box__container_type_photo");
 imagePopup.setEventListeners();
 
-///////create card modal///////
+///////////////////////
+//create card modal////
+//////////////////////
 function handleOpenModalCard() {
   cardPopup.open()
   const saveButton = document.querySelector('.popup-box__save')
@@ -149,23 +135,20 @@ addCardButton.addEventListener("click", () => handleOpenModalCard());
 
 const cardPopup = new PopupWithForm(".popup-box__container_type_card", {
   handleFormSubmit: () => {
-    // e.preventDefault();
-    // cardPopup.changeLoadingText(true);
     api.addNewCard({ name: titleInput.value, link: linkInput.value })
       .then((res) => {
         cardList.items.push(createCard(res))
       })
       .catch((err) => console.log(err))
-      // .finally(() => {
-      //   cardPopup.changeLoadingText(false);
-      // });
   }
 });
 
 cardPopup.setEventListeners();
 
 
-
+/////////////////
+//create card////
+/////////////////
 function createCard(cardItem) {
   const card = new Card(
     cardItem,
@@ -179,7 +162,7 @@ function createCard(cardItem) {
                 .catch((err) => console.log(err))
                 .finally(() => {
                   e.target.parentElement.remove();
- 
+
                 });
             }
           });
@@ -205,13 +188,10 @@ function createCard(cardItem) {
             })
             .catch((err) => { console.log(err) });
         } else if (e.target.classList.contains("photo-grid__photo")) {
-              imagePopup.open(e.target.parentElement.querySelector(".photo-grid__title").textContent, e.target.src);
+          imagePopup.open(e.target.parentElement.querySelector(".photo-grid__title").textContent, e.target.src);
         }
       }
     },
-  
-
     "#card-template", 'dfe326a7bc47ff5776017a43')
   cardList.addItem(card.generateCard());
 }
-
