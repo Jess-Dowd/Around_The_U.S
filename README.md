@@ -1,13 +1,37 @@
 # Project 4: Around The U.S.
+Part of the Practicum by Yandex Web Development Bootcamp Curriculum.
 
-**Intro**
+# Overview
+Description of the project and its functionality
+Features
+Technologies
+Figma
+Images
+Demo
 
-This webpage has adaptive layout that responds to different screen sizes, it also has a profile that can be edited in a popup box and functional buttons.
+# Description of the project and its functionality
 
-**project link**
+A responsive website using HTML5, CSS3 (flexbox, grid, BEM), built following to design mokup in Figma. JavaScript is used to add functionality to Form Fields in a Popup Box and save the edited values. Used BEM methodology with a nested file structure. The project adapts to the width of various devices (from 320px to 1280px). The project is based on dynamically editing the profile information on popup modals and adding cards of places and image popups. Everything is rendering responsively adapting to different screen sizes.
 
-* [Link to the project on github] https://jess-dowd.github.io/web_project_4/
+# Features
 
-**techniques and technologies**
+Form Popup Modal: editing profile information, adding/deleting cards with images and titles unsing a link to photo and Forms are validated using javascript. Image popup for each card with Delete and Like button.
 
-This project is built using HTML, CSS and javaScript.  Other tools and techniques used is DOM, popup boxs, css grid, Git, Gitbash, BEM, and Figma.
+# Technologies
+
+Stack: HTML5, CSS3, flexbox, grid layout, BEM, Media queries, transition, JavaScript, DOM, Debugging Git, Figma, Form validation, OOP, Webpack
+
+# Figma
+
+The website was made up according to the Figma layout requirements:
+
+Link to the project in Figma - 1
+Link to the project in Figma - 2
+Link to the project in Figma - 3
+
+# Images
+
+Export images directly from Figma and optimize them here, so your project loads faster.
+
+# Demo
+link: https://jess-dowd.github.io/Around_The_U.S/
